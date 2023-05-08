@@ -25,34 +25,42 @@
   
 ## 3. Use Case
 
+Unterschied zu 5. Geschäftsprozesse?
+
 ## 4. Architektur
 
 Die Software wird als Webapp entwickelt. Der Server wird mit Python und Flask entwickelt.
 
 ## 5. Geschäftsprozesse
 
-  1. Dienstbeginn Pflegepersonal:
-   - Eigenen Namen im Menü auswählen und anfangen den Tagesplan abzuarbeiten.
+  ### 1. Dienstbeginn Pflegepersonal:
+   - Eigenen Namen im Menü auswählen (1F) und anfangen den Tagesplan abzuarbeiten (2F).
    - Nach jedem Kunden schauen, wer der nächste Kunde ist. 
    - Wenn ein Kunde abgemeldet wird verschwindet er im Tagesplan.
    - Wenn alle Kunden abgearbeitet sind, Feierabend.
   
-  2. Krankmeldung eines Kunden:
+  ### 2. Krankmeldung eines Kunden:
    - Kunde ruft an.
    - Verwaltungsangestellte tragen Krankmeldung ein.
    - Software berücksichtigt Krankmeldung.
     
-  3. Neuer Angestellter:
+  ### 3. Neuer Angestellter:
    - Verwaltungsangestellte/Chef tragen neuen Angestellten ein.
    - Wahl der Rolle (Pfleger ambulant, Pfleger stationär, Verwaltung).
    
-  4. Neuer Kunde:
+  ### 4. Neuer Kunde:
    - Verwaltungsangestellte/Chef tragen neuen Kunden ein.
    - Wahl ob ambulant oder stationär.
    - Wahl an welchen Tagen bedarf besteht.
    - Wahl wie oft pro Tag bedarf besteht.
+  
+  ### 5. Dienstbeginn Verwaltung:
+   - Eigenen Namen im Menü auswählen (1F).
+   - Verwaltungsansicht (3F) wird angezeigt.
 
 ## 6. Datenmodell
+
+Link zu Bild von ER-Modell.
 
 ## 7. GUI-Design
 
