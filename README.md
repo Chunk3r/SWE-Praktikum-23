@@ -6,9 +6,9 @@
 ---
 ---
 
-## Die Dokumentation
+## Der Praktikumsbericht
 
-Die Dokumentation befindet sich [hier](./Dokumentation/DOKUMENTATION.md)
+Der Praktikumsbericht befindet sich [hier](./Dokumentation/DOKUMENTATION.md)
 
 ## Team
 
