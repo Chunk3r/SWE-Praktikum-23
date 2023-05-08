@@ -64,4 +64,10 @@ Link zu Bild von ER-Modell.
 
 ## 7. GUI-Design
 
+![Dropdown Mainmenu](./UI-1F.png 'Startpage')
+
+![Tagesplan](./UI-2F.png 'Tagesplan')
+
+![Verwaltungsansicht](./UI-3F.png 'Verwaltungsansicht')
+
 ## 8. Klassendiagramm
