@@ -8,7 +8,7 @@
 
 ## Der Praktikumsbericht
 
-Der Praktikumsbericht befindet sich [hier](./Dokumentation/DOKUMENTATION.md)
+Der Praktikumsbericht befindet sich [hier](./Praktikumsbericht.md)
 
 ## Team
 
