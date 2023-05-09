@@ -62,9 +62,9 @@ Die Gestaltung des Programms bleibt uns überlassen.
 
   - (4) Das Programm sollte sicher sein, und nur die Mitarbeiter sollten Zugang dazu haben: Die Software sollte mit starken Sicherheitsmechanismen ausgestattet sein, um unbefugten Zugriff oder Datenverstöße zu verhindern. Dies kann die Implementierung von Benutzerauthentifizierungs- und Autorisierungsmechanismen beinhalten. Darüber hinaus sollte der Zugriff auf das System nur befugten Mitarbeitern vorbehalten sein, und es sollten geeignete Zugriffskontrollen und Berechtigungen eingerichtet werden, um den Datenschutz und die Datensicherheit zu gewährleisten.
 
-## 3. Use Case
+## 3. Use Cases
 
-Unterschied zu 5. Geschäftsprozesse?
+![Use Case Diagram](./use-case-diagram.png 'Use Case Diagram')
 
 ## 4. Architektur
 
