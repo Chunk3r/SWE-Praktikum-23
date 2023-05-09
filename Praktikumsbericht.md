@@ -129,8 +129,14 @@ Der Benutzer wird mit einer "Willkommen"-Nachricht begrüßt und dann aufgeforde
 
 ![Tagesplan](./UI-2F.png 'Tagesplan')
 
+Diese Seite ist für sowohl Pfleger als auch Verwaltungsangestellte sichtbar. Hier sollte eine Navigationsleiste implementiert werden, die aus der Position des neuen Logos auf der linken Seite und zwei Navigationsknöpfen auf der rechten Seite besteht, genannt "Home" (welcher den Benutzer zur Login-Seite zurückleitet) und "Dienstplan" (wo wir uns gerade befinden). Die Seite besteht aus einer Tabelle, die den Dienstplan darstellt und Informationen wie den Namen des Patienten, seinen Standort sowie das Datum und die Uhrzeit enthält, zu denen der Pfleger den Patienten betreuen muss.
+
 ## Verwaltungsansicht 
 
-![Verwaltungsansicht](./UI-2F.png 'Verwaltungsansicht')
+![Verwaltungsansicht](./UI-3F.png 'Verwaltungsansicht')
+
+Zuletzt haben wir die Seite "Verwaltungssicht", die nur für Verwaltungsangestellte im Unternehmen sichtbar ist. Wie oben erwähnt, haben Verwaltungsangestellte Zugang sowohl zu den Seiten "Dienstplan" als auch "Verwaltungssicht".
+
+Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlichen Button in der Navigationsleiste namens "Verwaltung", der den Benutzer zur Seite "Verwaltungssicht" weiterleitet. Sie besteht aus einem minimalistischen Panel, das es dem Benutzer ermöglicht, den Tagesplan für Mitarbeiter und Patienten zu sehen, einen Mitarbeiter oder Patienten hinzuzufügen oder zu entfernen und die Krankmeldungen zu verwalten, die per Telefon an die Verwaltungsangestellten gesendet werden. Es sollte auch eine Suchleiste geben, die es dem Benutzer ermöglicht, nach einem bestimmten Mitarbeiter oder Patienten zu suchen und deren Informationen zu überprüfen.
 
 ## 8. Klassendiagramm
