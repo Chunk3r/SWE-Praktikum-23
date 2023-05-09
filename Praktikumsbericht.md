@@ -124,8 +124,8 @@ Dies ist die erste Seite, die der Benutzer sieht, wenn er die Website besucht. D
 
 Der Benutzer wird mit einer "Willkommen"-Nachricht begrüßt und dann aufgefordert, seinen Namen in einem Textfeld einzugeben, wonach er auf die Schaltfläche "OK" klickt. Durch Klicken auf die Schaltfläche wird der Benutzer je nach Rolle, die seinem Namen im Unternehmen zugeordnet ist, zu [Tagesplan](#tagesplan) oder [Verwaltungsansicht](#verwaltung) umgeleitet.
 
-![Tagesplan](./UI-2F.png 'Tagesplan') {#tagesplan} 
+![Tagesplan](./UI-2F.png 'Tagesplan')(#tagesplan) 
 
-![Verwaltungsansicht](./UI-3F.png 'Verwaltungsansicht'){#verwaltung}
+![Verwaltungsansicht](./UI-3F.png 'Verwaltungsansicht')(#verwaltung)
 
 ## 8. Klassendiagramm
