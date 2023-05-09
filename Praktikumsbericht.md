@@ -3,7 +3,7 @@
 
 ## 1. Einleitung
 <p align="center">
-  <img src="Logo1.png" alt="Logo" width="100%"/>
+  <img src="logo.svg" alt="Logo" width="100%"/>
 </p>
 
   ### 1.2 Rahmenbedingungen
