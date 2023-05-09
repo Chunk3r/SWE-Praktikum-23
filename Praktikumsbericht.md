@@ -43,6 +43,14 @@
   
   ### 2.2 nichtfunktionale Anforderungen
   
+  - (1) Das Programm sollte zuverlässig sein, damit es nicht abstürzt oder Daten verliert: Die Software sollte mit einer robusten Architektur und einer gut getesteten Codebasis entwickelt werden, um sicherzustellen, dass sie zuverlässig arbeitet, ohne abzustürzen oder Daten zu verlieren. Außerdem sollte sie über angemessene Datensicherungs- und Wiederherstellungsmechanismen verfügen, um sicherzustellen, dass die Daten bei einem Systemausfall oder anderen unerwarteten Ereignissen nicht verloren gehen.
+
+  - (2) Das Programm sollte skalierbar sein, damit es im Laufe der Zeit mit einer wachsenden Zahl von Mitarbeitern und Kunden umgehen kann: Die Software sollte in der Lage sein, im Laufe der Zeit eine wachsende Zahl von Mitarbeitern und Kunden aufzunehmen, ohne die Leistung oder Stabilität zu beeinträchtigen. 
+
+  - (3) Das Programm sollte eine Reaktionszeit von 5 Sekunden oder weniger haben, wenn es eine Aktion ausführt: Die Software sollte auf Geschwindigkeit optimiert sein, mit gut geschriebenem Code und effizienten Algorithmen, um sicherzustellen, dass sie Aktionen schnell ausführen kann. 
+
+  - (4) Das Programm sollte sicher sein, und nur die Mitarbeiter sollten Zugang dazu haben: Die Software sollte mit starken Sicherheitsmechanismen ausgestattet sein, um unbefugten Zugriff oder Datenverstöße zu verhindern. Dies kann die Implementierung von Benutzerauthentifizierungs- und Autorisierungsmechanismen beinhalten. Darüber hinaus sollte der Zugriff auf das System nur befugten Mitarbeitern vorbehalten sein, und es sollten geeignete Zugriffskontrollen und Berechtigungen eingerichtet werden, um den Datenschutz und die Datensicherheit zu gewährleisten.
+
 ## 3. Use Case
 
 Unterschied zu 5. Geschäftsprozesse?
