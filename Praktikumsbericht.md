@@ -114,7 +114,34 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
 
 ## 6. Datenmodell
 
-Link zu Bild von ER-Modell.
+![ER-Modell](./ER-Model.png 'Datenmodell')
+Dies ist die Übersicht über den Aufbau der Datenbank.
+
+### Adresse:
+
+Enthält die Anschriften der Kunden und Mitarbeiter.
+Hat eine Fortlaufende ID als Private Key.
+
+### Mitarbeiter:
+
+Enthält die MitarbeiterID als Private Key, den Namen, Eine Adress ID als Foreign Key um die Adresse mit dem Mitarbeiter zu verknüpfen.
+Die Rolle legt die Funktion des Mitarbeiters fest.
+
+### Kunde:
+
+Analog zum Mitarbeiter mit den Unterschieden, dass es keine Rolle gibt sondern eine pflegeart die festlegt ob der Kunde stationär oder ambulant gepflegt wird.
+
+### Krankschreibung Mitarbeiter:
+
+Speichert einen Zeitraum in dem einem Mitarbeiter keine Kunde zugeteilt werden.
+
+### Krankschreibung Kunde:
+
+Speichert einen Zeitraum in dem ein Kunde keinem Pfleger zugeteilt wird.
+
+### Besuche:
+
+Speichert einen Zeitpunkt an dem ein bestimmter Pfleger bei einem bestimmten Kunden sein soll.
 
 ## 7. GUI-Design
 
