@@ -3,8 +3,9 @@
 
 ## 1. Einleitung
 <p align="center">
-  <img src="LOGO.png" alt="Logo" width="100%"/>
+  <img src="Logo1.png" alt="Logo" width="100%"/>
 </p>
+
   ### 1.2 Rahmenbedingungen
 
 ## 2. Anforderungen
