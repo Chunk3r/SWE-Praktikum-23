@@ -62,6 +62,21 @@ Unterschied zu 5. Geschäftsprozesse?
 
 Die Software wird als Webapp entwickelt. Der Server wird mit Python und Flask entwickelt.
 
+Server:
+
+Genutzt wird WebFrameWork Flask mit dem Template System von JinJa und der SQL Schnittstelle Flask-SQLAlchemy
+
+Die jeweiligen Seiten werden als Funktion aufgerufen und geben eine HTML Datei zurück
+
+Gebraucht werden insgesamt 4 Templates:
+-Die Anmeldeseite womit man dann ->
+-zum Tagesplan kommt, wenn sich Mobile/Stationäre Pfleger anmelden
+-oder zur Verwaltung gelangt, wenn sich der Boss, oder Büroangestellte anmelden, wie z.B. die Sekretärin ( in der Ansicht sieht man alle An/Abmeldungen, Krankschreibungen etc der Pfleger und Patienten
+     -in dem 3. Template wird ein weiteres “kaskadiert” womit man  bei dem Edit Button angelangt um die jeweiligen Einträge zu editieren
+
+Man gelangt durch einen VPN zum Intranet der Firma, alle Mitarbeiter benötigen einen VPN Clienten den man kostenlos im App Store usw. installieren kann; danach ruft man die Seite der Firma auf im Browser.
+Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat darum.
+
 ## 5. Geschäftsprozesse
 
   ### 1. Dienstbeginn Pflegepersonal:
