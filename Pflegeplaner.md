@@ -85,22 +85,22 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
 
 ## 5. Geschäftsprozesse
 
-  ### 1. Dienstbeginn Pflegepersonal:
+  ### 1. Dienstbeginn Pflegepersonal
    - Eigenen Namen im Menü auswählen (1F) und anfangen den Tagesplan abzuarbeiten (2F).
    - Nach jedem Kunden schauen, wer der nächste Kunde ist. 
    - Wenn ein Kunde abgemeldet wird verschwindet er im Tagesplan.
    - Wenn alle Kunden abgearbeitet sind, Feierabend.
   
-  ### 2. Krankmeldung eines Kunden:
+  ### 2. Krankmeldung eines Kunden
    - Kunde ruft an.
    - Verwaltungsangestellte tragen Krankmeldung ein.
    - Software berücksichtigt Krankmeldung.
     
-  ### 3. Neuer Angestellter:
+  ### 3. Neuer Angestellter
    - Verwaltungsangestellte/Chef tragen neuen Angestellten ein.
    - Wahl der Rolle (Pfleger ambulant, Pfleger stationär, Verwaltung).
    
-  ### 4. Neuer Kunde:
+  ### 4. Neuer Kunde
    - Verwaltungsangestellte/Chef tragen neuen Kunden ein.
    - Wahl ob ambulant oder stationär.
    - Wahl an welchen Tagen bedarf besteht.
@@ -115,29 +115,29 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
 ![ER-Modell](./ER-Model.png 'Datenmodell')
 Dies ist die Übersicht über den Aufbau der Datenbank.
 
-### Adresse:
+### Adresse
 
 Enthält die Anschriften der Kunden und Mitarbeiter.
 Hat eine Fortlaufende ID als Private Key.
 
-### Mitarbeiter:
+### Mitarbeiter
 
 Enthält die MitarbeiterID als Private Key, den Namen, Eine Adress ID als Foreign Key um die Adresse mit dem Mitarbeiter zu verknüpfen.
 Die Rolle legt die Funktion des Mitarbeiters fest.
 
-### Kunde:
+### Kunde
 
 Analog zum Mitarbeiter mit den Unterschieden, dass es keine Rolle gibt sondern eine pflegeart die festlegt ob der Kunde stationär oder ambulant gepflegt wird.
 
-### Krankschreibung Mitarbeiter:
+### Krankschreibung Mitarbeiter
 
 Speichert einen Zeitraum in dem einem Mitarbeiter keine Kunde zugeteilt werden.
 
-### Krankschreibung Kunde:
+### Krankschreibung Kunde
 
 Speichert einen Zeitraum in dem ein Kunde keinem Pfleger zugeteilt wird.
 
-### Besuche:
+### Besuche
 
 Speichert einen Zeitpunkt an dem ein bestimmter Pfleger bei einem bestimmten Kunden sein soll.
 
