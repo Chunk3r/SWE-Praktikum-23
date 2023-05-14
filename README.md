@@ -8,7 +8,7 @@
 
 ## Der Praktikumsbericht
 
-Der Praktikumsbericht befindet sich [hier](./Praktikumsbericht.md)
+Der Praktikumsbericht befindet sich [hier](./Pflegeplaner.md)
 
 ## Team
 
