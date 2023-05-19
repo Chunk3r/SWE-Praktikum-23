@@ -62,9 +62,11 @@ Die Gestaltung des Programms bleibt uns überlassen.
 
 ## 3. Use Cases
 
-![Use Case Diagram](./use-case-diagram.png 'Use Case Diagram')
+![Use Case Diagram](./use-cases.png 'Use Case Diagram')
 
 ## 4. Architektur
+
+![Architektur](./Architektur.png 'Architektur')
 
 Die Software wird als Webapp entwickelt. Der Server wird mit Python und Flask entwickelt.
 
@@ -112,7 +114,7 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
 
 ## 6. Datenmodell
 
-![ER-Modell](./ER-Model.png 'Datenmodell')
+![ER-Modell](./DatenbankSchema.png 'Datenmodell')
 Dies ist die Übersicht über den Aufbau der Datenbank.
 
 ### Adresse
