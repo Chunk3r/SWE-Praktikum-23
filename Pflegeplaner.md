@@ -1,18 +1,16 @@
 # Pflegeplaner
 
 
-## 1. Einleitung
+## 
 <p align="center">
   <img src="logo.svg" alt="Logo" width="100%"/>
 </p>
 
-  ### 1.2 Rahmenbedingungen
+  ### 1. Einleitung und Rahmenbedingungen
 
-Die Firma "Pflege für Alle", ein mobiler Pflegedienst, der Menschen in Not pflegerische und häusliche Unterstützung bietet, hat uns gebeten, eine Software/App für sie zu entwickeln, damit sie mit dem Management Schritt halten können, das sich aus der Expansion des Unternehmens ergibt.
+Die Firma "Pflege für Alle", ein mobiler Pflegedienst, der hilfsbedürftigen Menschen Pflege und häusliche Unterstützung anbietet, hat uns gebeten, eine Software/App für sie zu entwickeln, um sie bei der Verwaltung zu unterstützen.
 
-Ursprünglich gab es 40 Mitarbeiter, aber seit sie letztes Jahr ein weiteres Pflegeheim erworben haben, hat sich die Zahl auf etwa 60 geändert. Vor dem Erwerb konnte der Firmeninhaber Rudi Fleißig all das Management im Kopf erledigen, aber jetzt fühlt er sich überfordert von der Anzahl der Mitarbeiter und Patienten, die berücksichtigt werden müssen.
-
-Die Software sollte den Mitarbeitern zugänglich sein und es den Pflegern ermöglichen, den Dienstplan einzusehen (der Name und Standort jedes Patienten sowie Datum und Uhrzeit enthält, zu der die Pfleger bei ihnen sein müssen), während es den Verwaltungsmitarbeitern ermöglicht, Dinge wie den Dienstplan zu verwalten, einen Mitarbeiter oder Kunden hinzuzufügen oder zu entfernen und deren Verfügbarkeit zu überprüfen.
+Die Software sollte für das Personal (Verwaltung und Pflege) zugänglich sein und den Pflegern ermöglichen, den Dienstplan einzusehen (der den Namen und den Ort jedes Patienten sowie das Datum und die Uhrzeit enthält, zu der die Pfleger bei ihm sein müssen), während das Verwaltungspersonal Dinge wie die Verwaltung des Dienstplans, das Hinzufügen oder Entfernen eines Mitarbeiters oder Kunden und die Überprüfung seiner Verfügbarkeit erledigen kann.
 
 Die Gestaltung des Programms bleibt uns überlassen.
 
