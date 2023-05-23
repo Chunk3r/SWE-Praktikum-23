@@ -123,7 +123,7 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
 
 ## 6. Datenmodell
 
-![ER-Modell](./DatenbankSchema.png 'Datenmodell')
+![ER-Modell](./DatenbankSchema_NEW.png 'Datenmodell')
 Dies ist die Übersicht über den Aufbau der Datenbank.
 
 ### Adresse
