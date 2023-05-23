@@ -103,6 +103,8 @@ Falls im Laufe des Tages änderungen vorliegen, kümmert sich das Sekretariat da
    - Wenn alle Kunden abgearbeitet sind, Feierabend.
   
   ### 2. Krankmeldung eines Kunden
+![KRANKMELDUNG](./Krankmeldung.png 'Krankmeldung')
+
    - Kunde ruft an.
    - Verwaltungsangestellte tragen Krankmeldung ein.
    - Software berücksichtigt Krankmeldung.
