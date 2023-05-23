@@ -61,6 +61,18 @@ Die Gestaltung des Programms bleibt uns überlassen.
 
 ![Use Case Diagram](./use-cases.png 'Use Case Diagram')
 
+1) Das Element "Verwaltung" soll die Mitarbeiter der Verwaltung im Unternehmen repräsentieren. Sie haben Zugang zu bestimmten Vorgängen und Seiten innerhalb der Website, wie "Login", "Kunden verwalten" und "Mitarbeiter verwalten".
+
+2) "Pflege" steht für die Betreuer im Unternehmen. Sie können sich auf der Website einloggen, haben aber nur Zugriff auf den Dienstplan.
+
+3) "Login" ist der Bereich, in dem sich der Benutzer (entweder ein Mitarbeiter aus "Verwaltung" oder "Pflege") identifizieren muss, bevor er Zugang zur Website erhält.
+
+4) "Mitarbeiter verwalten" ist ein Bereich, zu dem nur die Mitarbeiter aus der "Verwaltung" Zugang haben. Hier kann der Benutzer einen anderen Mitarbeiter hinzufügen oder entfernen, sowie seine Krankmeldungen verwalten.
+
+5) "Kunden verwalten" ist dem Bereich "Mitarbeiter verwalten" sehr ähnlich, mit dem einzigen Unterschied, dass sich dieser Bereich auf die Patienten, und nicht auf die Mitarbeiter bezieht. 
+
+6) "Dienstplan ansehen" bezieht sich auf den Dienstplan der Pfleger, auf den sie Zugriff haben. Hier können sie sehen, wer von ihnen wann und wo zu arbeiten hat.
+
 ## 4. Architektur
 
 ![Architektur](./Architektur.png 'Architektur')
