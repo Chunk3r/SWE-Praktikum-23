@@ -144,6 +144,7 @@ Speichert einen Zeitpunkt an dem ein bestimmter Pfleger bei einem bestimmten Kun
 
 ## Startseite 
 ![Dropdown Mainmenu](./UI-1F.png 'Startpage')
+Abbildung Startseite
 
 Dies ist die erste Seite, die der Benutzer sieht, wenn er die Website besucht. Die Seite besteht aus einem Hintergrundbild/-video, mit einem einfachen, minimalistisch aussehenden Anmeldepanel in der Mitte und dem Logo des Unternehmens darüber.
 
@@ -152,12 +153,14 @@ Der Benutzer wird mit einer "Willkommen"-Nachricht begrüßt und dann aufgeforde
 ## Tagesplan
 
 ![Tagesplan](./UI-2F.png 'Tagesplan')
+Abbildung Tagesplan
 
 Diese Seite ist für sowohl Pfleger als auch Verwaltungsangestellte sichtbar. Hier sollte eine Navigationsleiste implementiert werden, die aus der Position des neuen Logos auf der linken Seite und zwei Navigationsknöpfen auf der rechten Seite besteht, genannt "Home" (welcher den Benutzer zur Login-Seite zurückleitet) und "Dienstplan" (wo wir uns gerade befinden). Die Seite besteht aus einer Tabelle, die den Dienstplan darstellt und Informationen wie den Namen des Patienten, seinen Standort sowie das Datum und die Uhrzeit enthält, zu denen der Pfleger den Patienten betreuen muss.
 
 ## Verwaltungsansicht 
 
 ![Verwaltungsansicht](./UI-3F.png 'Verwaltungsansicht')
+Abbildung Verwaltungsansicht
 
 Zuletzt haben wir die Seite "Verwaltungssicht", die nur für Verwaltungsangestellte im Unternehmen sichtbar ist. Wie oben erwähnt, haben Verwaltungsangestellte Zugang sowohl zu den Seiten "Dienstplan" als auch "Verwaltungssicht".
 
