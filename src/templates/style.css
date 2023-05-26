@@ -541,3 +541,13 @@ input[type="submit"]:hover{
   border-color: #2691d9;
   transition: .5s;
 }
+
+/* LOGO ÜBER LOGIN 
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px; /* Adjust the size as needed */
+    width: 300px;
+    height:300px;
+    position: relative;
+  }
