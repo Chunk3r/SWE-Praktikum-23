@@ -24,7 +24,7 @@ body{
 .mainBackground {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(201, 214, 255, 0.5),rgba(5, 117, 230, 0.3));
+
     /*--background-image: linear-gradient(rgba(5, 117, 230, 0.4), rgba(0, 247, 96, 0.1));--*/
     position: relative;
     padding: 0 5%;
@@ -34,24 +34,10 @@ body{
     min-height: 100vh;
 }
 
-/*For leistungen.html */
-.mainBackground2 {
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(rgba(201, 214, 255, 0.5),rgba(5, 117, 230, 0.3));
-    /*--background-image: linear-gradient(rgba(5, 117, 230, 0.4), rgba(0, 247, 96, 0.1));--*/
-    position: absolute;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: -1;
-}
-
 /*Navigation bar */
 nav{
     width: 100%;
-    height: 5em;
+    height: 11em;
     position: absolute;
     top: 0;
     left: 0;
@@ -62,9 +48,10 @@ nav{
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
 }
-/*Logo */
-nav .logo{
-    width: 280px;
+/*Logo NavBar*/
+nav .logo1{
+    width: 200px;
+
 }
 /*Navigation buttons */
 nav ul li{
@@ -87,6 +74,7 @@ nav ul li a:hover{
     -webkit-text-stroke: 1px #5FB0FF;
 }
 
+
 /*Element: big text in the middle for index.html */
 .content{
     text-align: center;
@@ -101,29 +89,8 @@ nav ul li a:hover{
 }
 
 
-/* */
-/* */
-/*Element: big text in the middle for leistungen.html */
-.content-Leistung{
-    text-align: center;
-}
-/*Its text design */
-.content-Leistung h1{
-    text-decoration: none;
-    font-size: 140px;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.5s;
-    margin-top: 2em;
-    margin-bottom: 1em;
-}
-/*"On Hover" effect for the text in the middle from leistungen.html */
-.content-Leistung h1:hover{
-    -webkit-text-stroke: 2px #FFF;
-    color: transparent;
-}
-/* */
-/* */
+
+
 /*The background Video from index.html */
 .back-video{
     position: absolute;
@@ -138,6 +105,10 @@ nav ul li a:hover{
         height: auto;
     }
 }
+
+
+
+
 /*Commands to keep the maximum aspect-ratio of the background video */
 @media (max-aspect-ratio: 16/9){
     .back-video{
@@ -147,137 +118,7 @@ nav ul li a:hover{
 }
 /* */
 /* */
-/* */
-/*The text-box from leistungen.html */
-.textbox-leistung{
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 10em;
-    display: table-cell;
-    vertical-align: middle;
-    width: 56em;
-    padding: 80px;
-}
-/*The text within the box */
-.textbox-leistung div{
-    align-items: center;
-    display:inline-block;
-    color: #fff;
-    font-size: 18px;
-    border: 4px solid #5FB0FF;
-    padding: 14px 70px ;
-    border-radius: 50px;
-    text-align: left;
-    box-shadow: 0 15px 20px rgb(0 0 0 / 50%);
-    background: rgba(80, 84, 87, 0.295);
-    width: 900px;
-}
-
-.textbox-leistung ul {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.textbox-leistung-title {
-    margin-top: 40px;
-}
-
-
-/* */
-/* */
-/*The Contact-Form element */
-.kontakt-section{
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 10em;
-    display: table-cell;
-    vertical-align: middle;
-    width: 56em;
-    /* Center element */
-    margin-top: auto;
-    margin-bottom: auto;
-    /* navbar spacing */
-    padding-top: 11em;
-}
-.kontakt-section h1{
-text-align: center;
-}
-
-/*Each individual cell (Name, E-mail etc) */
-.kontakt-form{
-    max-width: 600px;
-    margin: auto;
-    padding: 0 10px;
-    overflow: hidden;
-}
-/*Styling the text within those cells*/
-.kontakt-form-text{
-    background: #ffffff8e;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 16px 0;
-    border: 0;
-    padding: 20px 40px;
-    outline: none;
-    color: #ddd
-    transition: 0.5s;
-}
-/*When inside one of those cells, the cell glows*/
-.kontakt-form-text:focus{
-    box-shadow: 0 0 10px 4px rgb(95, 176, 255);
-}
-/*Styling the message box*/
-textarea.kontakt-form-text{
-    resize: none;
-    height: 120px;
-}
-/*The "Send" button*/
-.kontakt-form-btn{
-    float: right;
-    border: 0;
-    background: #5FB0FF;
-    color: #fff;
-    padding: 12px 50px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.5;
-}
-/*The "Send" button - on cursor hover, change color*/
-.kontakt-form-btn:hover{
-    background: rgb(35, 136, 238);
-}
-
-/* */
-/* */
-/* */
-
-
-/* */
-/* */
-/* */
-/*The background image from leistungen.html */
-.background-img2{
-    background-image: url(media/bckimg3.jpg);
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    z-index: -2;
-}
-/*The background image from kontakt.html */
-.background-img3{
-    background-image: url(media/bckimg4.jpg);
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    z-index: -2;
-}
+/*!!!!IN CASE WE DECIDE FOR FOOTER LATER!!!!*/
 
 footer {
     padding-top: 2rem;
@@ -413,6 +254,8 @@ footer {
 
 
 
+
+
 /* LOGIN PANEL */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
@@ -520,7 +363,7 @@ input[type="submit"]:hover{
 .logo {
     display: block;
     margin: 0 auto;
-    max-width: 400px; /* Adjust the size as needed */
+    max-width: 400px; 
     width: 300px;
     height:300px;
     position: relative;
@@ -528,3 +371,86 @@ input[type="submit"]:hover{
   }
 
   
+  /* TABELLE DIENSTPLAN.html*/
+
+  .center2{
+      position: relative;
+      width: 50%;
+      background: rgba(255, 255, 255, 0.788);
+      border-radius: 10px;
+      box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+      margin-top: 100px;
+    }
+
+
+
+
+  .appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .appointment-table th {
+    background-color: #5fafff9a;
+    color: white;
+    
+  }
+  
+  .appointment-table td {
+    background-color: #f2f2f2a1;
+  }
+  
+  .appointment-table tbody tr:nth-child(even) td {
+    background-color: #ebebeba1;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    border: 1px solid #ccc;
+  }
+  
+  .appointment-table th:first-child,
+  .appointment-table td:first-child {
+    border-left: none;
+  }
+  
+  .appointment-table th:last-child,
+  .appointment-table td:last-child {
+    border-right: none;
+  }
+  
+  .appointment-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+
+  .date-container{
+    margin-top: 30px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    padding-bottom: 5px;
+  }
+
+.date-btn{
+    text-decoration: none;
+    background-color: #5FB0FF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: 800;
+}
