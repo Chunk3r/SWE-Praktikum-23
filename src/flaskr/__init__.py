@@ -1,35 +1,33 @@
 import os
 
-from flask import Flask, request, render_template
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    
     app.config.from_mapping(
-        SECRET_KEY='dev',
+        SECRET_KEY='2922_ara_420%ara',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
-
-    # ensure the instance folder exists
+    # ensure the instance folder for the database exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
     from . import db
     db.init_app(app)
+
+    # blueprint for auth routes in our app
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
+
+    # blueprint for non-auth parts of app
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     return app

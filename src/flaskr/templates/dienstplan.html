@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pflege für Alle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/logo.svg">
+</head>
+<body>
+
+    <div class="mainBackground">
+
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="media/videoclip.mp4" type="video/mp4">
+        </video>
+
+        <nav>
+            <img src="media/logo.svg" class="logo1">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="dienstplan.html">DIENSTPLAN</a></li>
+            </ul>
+        </nav>
+
+        <div class="center2">
+            <div class="date-container">
+                <button class="date-btn" id="previous-btn">&#60;</button>
+                <span class="date">DD.MM.YYYY</span>
+                <button class="date-btn" id="next-btn">&#62;</button>
+            </div>
+            <table class="appointment-table">
+                <thead>
+                    <tr>
+                        <th>Uhrzeit</th>
+                        <th>Patient</th>
+                        <th>Ort</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00</td>
+                        <td>Patient Nummer 1</td>
+                        <td>Musterstrasse 1, Krefeld</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 2</td>
+                        <td>Musterstrasse 2, Krefeld</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 3</td>
+                        <td>Musterstrasse 3, Dortmund</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 4</td>
+                        <td>Musterstrasse 4, Berlin</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 5</td>
+                        <td>Musterstrasse 6565</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 6</td>
+                        <td>Musterstrasse 1322</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 7</td>
+                        <td>Musterstrasse 98</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 8</td>
+                        <td>Musterstrasse 3232</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 7</td>
+                        <td>Musterstrasse 98</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 8</td>
+                        <td>Musterstrasse 3232</td>
+                    </tr>
+                    <tr>
+                        <td>10:00</td>
+                        <td>Patient Nummer 7</td>
+                        <td>Musterstrasse 98</td>
+                    </tr>
+                    
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const previousBtn = document.getElementById('previous-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dateElement = document.querySelector('.date');
+    
+        let currentDate = new Date();
+    
+        previousBtn.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() - 1);
+            updateDate();
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() + 1);
+            updateDate();
+        });
+    
+        function updateDate() {
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const formattedDate = currentDate.toLocaleDateString('en-GB', options);
+            dateElement.textContent = formattedDate;
+        }
+    
+        updateDate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.main-content 
+{
+    width: 100%;
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/*For index.html*/
+.mainBackground {
+    width: 100%;
+    height: 100%;
+
+    /*--background-image: linear-gradient(rgba(5, 117, 230, 0.4), rgba(0, 247, 96, 0.1));--*/
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/*Navigation bar */
+nav{
+    width: 100%;
+    height: 11em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+}
+/*Logo NavBar*/
+nav .logo1{
+    width: 200px;
+
+}
+/*Navigation buttons */
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 40px;
+}
+/*Navigation buttons text */
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    border: 2px solid #fff;
+    padding: 4px 10px;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+/*Navigation buttons "on Hover" effect */
+nav ul li a:hover{
+    -webkit-text-stroke: 1px #5FB0FF;
+}
+
+
+/*Element: big text in the middle for index.html */
+.content{
+    text-align: center;
+}
+/*Its Text design */
+.content h1{
+    margin: 102px;
+    padding-bottom: 500px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+
+
+
+/*The background Video from index.html */
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+/*Commands to keep the minimum aspect-ratio of the background video */
+@media (min-aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+/*Commands to keep the maximum aspect-ratio of the background video */
+@media (max-aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+/* */
+/* */
+/*!!!!IN CASE WE DECIDE FOR FOOTER LATER!!!!*/
+
+footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.footer-nav {
+    justify-content: center;
+    border-bottom: 2px;
+    border-color: #DDDDDD;
+    border-bottom-style: solid;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.footer-nav li a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-decoration: none;
+    color: #004aad;
+}
+
+.footer-nav li a:hover {
+    color: #2ea3f0;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: center;
+}
+
+.footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: end;
+}
+
+.footer-socials a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+    height: 24px;
+}
+
+.footer-socials a li p {
+    color: #9d00ad;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-block;
+}
+
+.footer-socials li {
+    margin-left: 1rem;
+}
+
+#features {
+    padding-top: 50px;
+}
+
+#features h2 {
+    margin-top: 25px;
+    height: 75px;
+}
+
+#features ul {
+    justify-content: center;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+#features ul li {
+    width: 200px;
+    height: 350px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.feature-text{
+
+}
+
+.feature-image{
+}
+
+#section-contact {
+    background-color: #d7f2ff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#section-contact p {
+    display: inline-block;
+    font-size: 30px;
+    margin-top: auto;
+    margin-bottom:auto;
+}
+
+#section-contact a {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    border: 4px solid #5FB0FF;
+    color: #000;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 40px;
+}
+
+#section-contact div {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+
+
+
+/* LOGIN PANEL */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+.mainBackground {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(201, 214, 255, 0.5),rgba(5, 117, 230, 0.3));
+  /*--background-image: linear-gradient(rgba(5, 117, 230, 0.4), rgba(0, 247, 96, 0.1));--*/
+  position: relative;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.center{
+margin-top: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: rgba(255, 255, 255, 0.788);
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+.center h1{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+}
+.center form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.txt_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+.txt_field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #2691d9;
+  transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  top: -5px;
+  color: #2691d9;
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+  width: 100%;
+}
+.pass{
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+.pass:hover{
+  text-decoration: underline;
+}
+input[type="submit"]{
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #2691d9;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  margin: 30px 0;
+}
+input[type="submit"]:hover{
+  border-color: #2691d9;
+  transition: .5s;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px; 
+    width: 300px;
+    height:300px;
+    position: relative;
+    padding-bottom: 100px;
+  }
+
+  
+  /* TABELLE DIENSTPLAN.html*/
+
+  .center2{
+      position: relative;
+      width: 50%;
+      background: rgba(255, 255, 255, 0.788);
+      border-radius: 10px;
+      box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+      margin-top: 100px;
+    }
+
+
+
+
+  .appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .appointment-table th {
+    background-color: #5fafff9a;
+    color: white;
+    
+  }
+  
+  .appointment-table td {
+    background-color: #f2f2f2a1;
+  }
+  
+  .appointment-table tbody tr:nth-child(even) td {
+    background-color: #ebebeba1;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    border: 1px solid #ccc;
+  }
+  
+  .appointment-table th:first-child,
+  .appointment-table td:first-child {
+    border-left: none;
+  }
+  
+  .appointment-table th:last-child,
+  .appointment-table td:last-child {
+    border-right: none;
+  }
+  
+  .appointment-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+
+  .date-container{
+    margin-top: 30px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    padding-bottom: 5px;
+  }
+
+.date-btn{
+    text-decoration: none;
+    background-color: #5FB0FF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: 800;
+}
