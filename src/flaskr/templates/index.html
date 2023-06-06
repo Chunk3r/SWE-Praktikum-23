@@ -3,7 +3,7 @@
 	<head>
 		<title>Pflege für Alle</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-		<link rel="icon" href="{{ url_for('static', filename='logo.svg') }}">
+		<link rel="icon" href="{{ url_for('static', filename='media/logo.svg') }}">
 	</head>
 
     	<body>
@@ -21,11 +21,18 @@
         		<div class="center">
           			<h1>Wilkommen</h1>
           			
-				<form method="post" action="/login">
-            				<div class="txt_field">
-              					<input type="text" name="name" required>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+    					<div class="notification is-danger">
+        					{{ messages[0] }}
+    					</div>
+				{% endif %}
+				{% endwith %}
+				<form method="POST" action="/login">
+				<div class="txt_field">
+					<input type="text" name="NachName" required>
               					<span></span>
-              					<label>Nachname:Vorname</label>
+              					<label>NachName</label>
             				</div>
             				<input type="submit" value="Login">
           			</form>

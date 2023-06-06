@@ -9,6 +9,5 @@ cursor = con.cursor()
 
 
 result = cursor.execute("SELECT VorName FROM Mitarbeiter;")
-
-con.commit()
-print(result.fetchone())
+result = result.fetchone()
+print(result[0])
