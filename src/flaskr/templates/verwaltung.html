@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pflege für Alle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/logo.svg">
+</head>
+<body>
+
+    <div class="mainBackground">
+
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="media/videoclip.mp4" type="video/mp4">
+        </video>
+
+        <nav>
+            <img src="media/logo.svg" class="logo1">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="dienstplan.html">DIENSTPLAN</a></li>
+                <li><a href="verwaltung.html">VERWALTUNG</a></li>
+            </ul>
+        </nav>
+
+        <div class="center2">
+            <div class="date-container">
+                <h1>Verwaltungssicht</h1>
+            </div>
+            <div class="table-header-verwaltung">
+                <div class="button-group">
+                    <button class="rounded-button">Mitarbeiter</button>
+                    <button class="rounded-button">Patient</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" class="search-box-text" placeholder="Suchen...">
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-button">Edit</button>
+                    <div class="dropdown-content">
+                        <a href="#">Krankmeldung</a>
+                        <a href="#">Anmeldung</a>
+                        <a href="#">Abmeldung</a>
+                    </div>
+                </div>
+            </div>
+            <table class="verwaltung-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Datum (von - bis)</th>
+                        <th>Krankheitsbeschreibung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Max Mustermann</td>
+                        <td>2023-06-01 bis 2023-06-03</td>
+                        <td>Fieber</td>
+                    </tr>
+                    <tr>
+                        <td>Maxina Musterfrau</td>
+                        <td>2023-06-02 bis 2023-06-010</td>
+                        <td>Erkältung</td>
+                    </tr>
+                    <tr>
+                        <td>Johnny Nichtmutermann</td>
+                        <td>2023-06-01 bis 2023-06-03</td>
+                        <td>Autounfall</td>
+                    </tr>
+                    <tr>
+                        <td>Ben Dover</td>
+                        <td>2023-06-01 bis 2023-06-03</td>
+                        <td>Durchfall</td>
+                    </tr>
+                    <!-- mehrere Zeilen hier hinzufügen -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
