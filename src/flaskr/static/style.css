@@ -282,9 +282,40 @@ margin-top: 50px;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
-.notif{
-	
+
+/* NOTIF - Das Popup */
+.notif {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 300px;
+  background-color: #f44336;
+  color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 5s ease-in-out, transform 1s ease-in-out;
 }
+
+.notif.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notif-content {
+  display: flex;
+  align-items: center;
+}
+
+.notif-content p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+
+
 
 .center h1{
   text-align: center;
