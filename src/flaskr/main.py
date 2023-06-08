@@ -26,6 +26,6 @@ def dienstplan():
     return render_template("dienstplan.html", appointments=appointments)
 
 
-@main.route('/profile')
-def profile():
+@main.route('/verwaltung')
+def verwaltung():
     return 'Profile'

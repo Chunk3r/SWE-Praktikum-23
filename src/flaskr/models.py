@@ -7,10 +7,7 @@ class Mitarbeiter(UserMixin):
         self.VorName = VorName
         self.NachName = NachName
         self.authenticated = False
-        if Rolle == None:
-            self.Rolle = "Pfleger"
-        else:
-            self.Rolle = Rolle
+        self.Rolle = Rolle
 
     def is_authenticated(self):
         return self.authenticated
