@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flaskr.db import get_db
-from flask_login import login_required
+from flask_login import login_required, current_user
 #app = Flask(__name__)
 main = Blueprint('main', __name__)
 
@@ -22,8 +22,10 @@ def dienstplan():
     appointments = db.execute("SELECT * FROM Besuche").fetchall()
 
     print("appointmets:", appointments)
+    print(current_user) 
+    #return render_template("dienstplan.html", appointments=appointments, NachName=current_user.NachName)
+    return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user)
 
-    return render_template("dienstplan.html", appointments=appointments)
 
 
 @main.route('/verwaltung')
