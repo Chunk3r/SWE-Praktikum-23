@@ -481,6 +481,16 @@ input[type="submit"]:hover{
     padding-bottom: 5px;
   }
 
+.date-container span{
+  text-decoration: none;
+  color: #000000;
+  font-size: 22px;
+  border: 2px solid #fff;
+  padding: 4px 10px;
+  border-radius: 50px;
+  transition: 0.5s;
+}
+
 .date-btn{
     text-decoration: none;
     background-color: #5FB0FF;
