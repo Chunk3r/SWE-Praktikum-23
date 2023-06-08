@@ -2,11 +2,15 @@ from flask_login import UserMixin, login_user
 import sqlite3
 from . import db#, login_manager
 class Mitarbeiter(UserMixin):
-    def __init__(self, ID, VorName, NachName):
+    def __init__(self, ID, VorName, NachName, Rolle=None):
         self.ID = ID
         self.VorName = VorName
         self.NachName = NachName
         self.authenticated = False
+        if Rolle == None:
+            self.Rolle = "Pfleger"
+        else:
+            self.Rolle = Rolle
 
     def is_authenticated(self):
         return self.authenticated

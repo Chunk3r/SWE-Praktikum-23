@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from . import db
 import sqlite3
-from flask_login import login_user, logout_user#, load_user
-from .models import Mitarbeiter#, load_user
+from flask_login import login_user, logout_user, current_user
+from .models import Mitarbeiter
 
 
 auth = Blueprint('auth', __name__)
@@ -17,32 +17,24 @@ def login():
 def login_post():
     
     NachName = request.form.get('NachName')
-    print("------")
-    print(NachName)
-    print("------")
 
     cursor = db.get_db().cursor() 
     cursor.execute(f"Select MB_ID, VorName, NachName FROM Mitarbeiter WHERE NachName='{NachName}';")
     result = cursor.fetchone()
-
     
-    print(list(result))
+    if not result:
+        flash('Account existiert nicht')
+        return redirect(url_for('auth.login'))
+
     user_ID, user_VorName, user_NachName = list(result)
-    print(user_ID) 
-    print(user_VorName)
-    print(user_NachName)
     user = Mitarbeiter(user_ID, user_VorName, user_NachName)
-    print("lol")
     #db_user = load_user(user.NachName) 
-    print("lol")
+    
     if user.NachName != NachName :
-    #if user[2] != NachName:
-        flash('Please try again')
         return redirect(url_for('auth.login'))
     else:
         login_user(user)
-        #login_user(db_user)
-        return render_template('dienstplan.html')
+        return render_template('dienstplan.html', NachName = current_user.NachName)
 
 @auth.route('/signup')
 def signup():
@@ -50,5 +42,6 @@ def signup():
 
 @auth.route('/logout')
 def logout():
-    logout_user()
-    return 'Logout'
+    lol = logout_user()# gibt True aus wenn erfolgreich
+    
+    return render_template('index.html')

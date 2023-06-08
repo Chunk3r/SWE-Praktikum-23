@@ -60,7 +60,7 @@ nav ul li{
     margin-left: 40px;
 }
 /*Navigation buttons text */
-nav ul li a{
+nav ul li a,span{
     text-decoration: none;
     color: #fff;
     font-size: 22px;
@@ -282,6 +282,10 @@ margin-top: 50px;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
+.notif{
+	
+}
+
 .center h1{
   text-align: center;
   padding: 20px 0;

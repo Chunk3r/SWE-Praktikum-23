@@ -17,18 +17,19 @@
             			<h1><img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo"></h1>
           		</div>
 
-
-        		<div class="center">
-          			<h1>Wilkommen</h1>
-          			
-				{% with messages = get_flashed_messages() %}
+			{% with messages = get_flashed_messages() %}
 				{% if messages %}
-    					<div class="notification is-danger">
+    					<div class="notif">
         					{{ messages[0] }}
     					</div>
 				{% endif %}
 				{% endwith %}
-				<form method="POST" action="/login">
+
+        		<div class="center">
+				
+          			<h1>Wilkommen</h1>
+          			
+								<form method="POST" action="/login">
 				<div class="txt_field">
 					<input type="text" name="NachName" required>
               					<span></span>
