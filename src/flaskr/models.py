@@ -1,6 +1,6 @@
 from flask_login import UserMixin, login_user
 import sqlite3
-from . import db, login_manager
+from . import db#, login_manager
 class Mitarbeiter(UserMixin):
     def __init__(self, ID, VorName, NachName):
         self.ID = ID
@@ -23,7 +23,7 @@ class Mitarbeiter(UserMixin):
 
     def is_anonymous(self):
         return False
-
+'''
 @login_manager.user_loader
 def load_user(user_id):
     conn = db.get_db()
@@ -34,3 +34,4 @@ def load_user(user_id):
         return None
     else:
         return Mitarbeiter(int(result[0]), result[1], result[2])
+        '''

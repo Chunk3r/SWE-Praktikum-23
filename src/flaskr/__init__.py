@@ -1,9 +1,9 @@
 import os
 from . import db
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import sqlite3
+from .models import Mitarbeiter
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -43,14 +43,15 @@ def create_app(test_config=None):
     def load_user(user_id):
         # since the user_id is just the primary key of our user table, use it in the query for the user
         #return User.query.get(int(user_id))
-        conn = sqlite3.connect('../instance/flaskr.sqlite')
+        #conn = sqlite3.connect('../instance/flaskr.sqlite')
+        conn = db.get_db()
         curs = conn.cursor()
         curs.execute(f"SELECT MB_ID, VorName, NachName FROM Mitarbeiter WHERE MB_ID='{user_id}';")
         result = curs.fetchone()
         if result is None:
             return None
         else:
-            return User(int(result[0]), result[1], result[2])
+            return Mitarbeiter(int(result[0]), result[1], result[2])
 
 
     return app
