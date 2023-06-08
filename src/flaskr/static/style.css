@@ -519,10 +519,10 @@ input[type="submit"]:hover{
   display: flex;
 }
 
-.rounded-button {
+.rounded-button1 {
   border: none;
   border-radius: 20px;
-  background-color: #5FB0FF;
+  background-color: #FF8079;
   color: white;
   padding: 5px 10px;
   cursor: pointer;
@@ -530,9 +530,24 @@ input[type="submit"]:hover{
   font-weight: 800;
   transition: 0.5s;
 }
-.rounded-button:hover {
+.rounded-button1:hover {
   color: rgb(0, 0, 0);
 }
+.rounded-button2 {
+  border: none;
+  border-radius: 20px;
+  background-color: #34C191;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: 800;
+  transition: 0.5s;
+}
+.rounded-button2:hover {
+  color: rgb(0, 0, 0);
+}
+
 
 
 .search-box input[type="text"] {
@@ -608,3 +623,45 @@ input[type="submit"]:hover{
   background-color: #f2f2f2;
 }
 
+
+/*Die Pfeile unten bei Verwaltung.html*/
+.pfeil-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.pfeil-buttonL {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #5fafff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.5s;
+  margin-top:10px;
+  margin-right:10px;
+}
+.pfeil-buttonR {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #5fafff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.5s;
+  margin-top:10px;
+  margin-left:10px;
+}
+
+.pfeil-buttonL:hover {
+  color: black;
+}
+.pfeil-buttonR:hover {
+  color: black;
+}
