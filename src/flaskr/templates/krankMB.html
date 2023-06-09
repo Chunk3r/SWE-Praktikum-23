@@ -17,25 +17,28 @@
             			<h1><img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo"></h1>
           		</div>
 
-        		<div class="center">
-				
-          			<h1>Wilkommen</h1>
-          			
+				  <div class="center">
+					<h1>Wilkommen</h1>
 					<form method="POST" action="/verwaltung">
 						<div class="txt_field">
 							<input type="text" name="VorName" required>
-              						<label>VorName</label>
-
-							<input name="NachName" required>
-							<label>NachName</label>
-
-							<input name="von" required>
-							<label>Von 
-            					</div>
-
-            					<input type="submit" value="AddKrankMB">
-          				</form>
-        		</div>
-		</div>
-	</body>
-</html>
+							<label>Vorname</label>
+						</div>
+						<div class="txt_field">
+							<input type="text" name="NachName" required>
+							<label>Nachname</label>
+						</div>
+						<div class="txt_field">
+							<input type="text" name="von" required>
+							<label>Von (YYYY-MM-DD)</label>
+						  </div>
+						  <div class="txt_field">
+							<input type="text" name="bis" required>
+							<label>Bis (YYYY-MM-DD)</label>
+						  </div>
+						<input type="submit" value="Send">
+					</form>
+				</div>
+			</div>
+		</body>
+		</html>
