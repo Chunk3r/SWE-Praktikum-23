@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pflege für Alle</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="icon" href="{{ url_for('static', filename='media/logo.svg') }}">
+	</head>
+
+    	<body>
+        	<div class="mainBackground">
+    
+          		<video autoplay loop muted plays-inline class="back-video">
+              			<source src="{{ url_for('static', filename='media/videoclip.mp4') }}" type="video/mp4">
+          		</video>
+    
+          		<div class="content">
+            			<h1><img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo"></h1>
+          		</div>
+
+        		<div class="center">
+				
+          			<h1>Wilkommen</h1>
+          			
+					<form method="POST" action="/verwaltung">
+						<div class="txt_field">
+							<input type="text" name="VorName" required>
+              						<label>VorName</label>
+
+							<input name="NachName" required>
+							<label>NachName</label>
+
+							<input name="von" required>
+							<label>Von 
+            					</div>
+
+            					<input type="submit" value="AddKrankMB">
+          				</form>
+        		</div>
+		</div>
+	</body>
+</html>

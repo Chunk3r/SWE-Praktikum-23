@@ -29,8 +29,13 @@ def dienstplan():
 def verwaltung():
     cursor = get_db().cursor()
     dienstbefreiung = cursor.execute("""SELECT Mitarbeiter.VorName, Mitarbeiter.NachName, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
-            FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;""").fetchmany(2)
+            FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;""").fetchall()
     dienstbefreiung = list(dienstbefreiung)
 
 
     return render_template("verwaltung.html", Mitarbeiter=current_user, dienstbefreiung=dienstbefreiung)
+
+@main.route('/krankMB')
+@login_required
+def krankMB():
+    return render_template("krankMB.html")
