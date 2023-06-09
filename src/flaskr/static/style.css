@@ -665,3 +665,13 @@ input[type="submit"]:hover{
 .pfeil-buttonR:hover {
   color: black;
 }
+
+
+/*Farben von "Mitarbeiter" bzw. "Patient" Table-Rows in "Verwaltung.html"*/
+.Mitarbeiter-background {
+  background-color: #FF8079;
+}
+
+.Patient-background {
+  background-color: #34C191;
+}
