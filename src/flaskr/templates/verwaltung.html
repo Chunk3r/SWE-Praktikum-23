@@ -17,9 +17,11 @@
         <nav>
             <img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo1">
             <ul>
-                <li><a href="/">HOME</a></li>
+		<li><span> Willkommen {{ Mitarbeiter.NachName }} </span> </li>
+
                 <li><a href="/dienstplan">DIENSTPLAN</a></li>
                 <li><a href="/verwaltung">VERWALTUNG</a></li>
+		<li><a href="{{ url_for('auth.logout') }}">LogOut</a></li>
             </ul>
         </nav>
 

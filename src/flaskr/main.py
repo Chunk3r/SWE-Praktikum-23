@@ -29,5 +29,10 @@ def dienstplan():
 
 
 @main.route('/verwaltung')
+@login_required
 def verwaltung():
-    return 'Profile'
+    cursor = get_db().cursor()
+    
+
+
+    return render_template("verwaltung.html", Mitarbeiter=current_user)
