@@ -77,26 +77,27 @@
 
     <script>
         // Damit ändern sich die Farben von Table-Rows wenn man auf "Mitarbeiter" oder "Patient" clickt. 
-
         document.addEventListener("DOMContentLoaded", function() {
             const button1 = document.querySelector(".rounded-button1");
             const button2 = document.querySelector(".rounded-button2");
             const rows = document.querySelectorAll("tbody tr");
-
+          
             button1.addEventListener("click", function() {
-                rows.forEach(function(row) {
-                    row.classList.remove("Patient-background");
-                    row.classList.add("Mitarbeiter-background");
-                });
+              rows.forEach(function(row) {
+                row.classList.remove("Patient-background");
+                row.classList.add("Mitarbeiter-background");
+                row.style.color = "white"; // Text-Farbe von "Mitarbeiter" in weiß ändern
+              });
             });
-
+          
             button2.addEventListener("click", function() {
-                rows.forEach(function(row) {
-                    row.classList.remove("Mitarbeiter-background");
-                    row.classList.add("Patient-background");
-                });
+              rows.forEach(function(row) {
+                row.classList.remove("Mitarbeiter-background");
+                row.classList.add("Patient-background");
+                row.style.color = "white"; // Text-Farbe von "Patient" in weiß ändern
+              });
             });
-        });
+          });
     </script>
     <script src="{{ url_for('static', filename='verwaltung.js') }}"></script>
 </body>
