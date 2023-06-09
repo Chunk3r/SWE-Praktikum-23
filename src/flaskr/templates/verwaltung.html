@@ -50,17 +50,19 @@
             <table class="verwaltung-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Datum (von - bis)</th>
-                        <th>Krankheitsbeschreibung</th>
+			<th>VorName</th>
+                        <th>NachName</th>
+                        <th>Abgemeldet von</th>
+                        <th>bis</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in verwaltungen %}
+                    {% for item in dienstbefreiung %}
                     <tr>
                         <tr>
                             <td>{{ item[0] }}</td>
-                            <td>{{ item[1] }} bis {{ item[2] }}</td>
+			    <td>{{ item[1] }}</td>
+                            <td>{{ item[2] }}</td>
                             <td>{{ item[3] }}</td>
                         </tr>
                     {% endfor %}
