@@ -25,15 +25,24 @@ def dienstplan():
 
 
 @main.route('/verwaltung', methods=["GET","POST"])
+@main.route('/verwaltung/<mbPT>', methods=["GET","POST"])
 @login_required
-def verwaltung():
+def verwaltung(mbPT=None):
     cursor = get_db().cursor()
-    dienstbefreiung = cursor.execute("""SELECT Mitarbeiter.VorName, Mitarbeiter.NachName, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
-            FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;""").fetchall()
-    dienstbefreiung = list(dienstbefreiung)
+    mb_krankmeldung = """SELECT Mitarbeiter.VorName, Mitarbeiter.NachName, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
+            FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;"""
+    pt_krankmeldung = """ SELECT Kunde.VorName, Kunde.NachName, Krankschreibung_Kunde.Start_Datum, Krankschreibung_Kunde.Ende_Datum
+            FROM Krankschreibung_Kunde JOIN Kunde ON Kunde.Kunden_ID = Krankschreibung_Kunde.Kunden_ID;"""
 
 
-    return render_template("verwaltung.html", Mitarbeiter=current_user, dienstbefreiung=dienstbefreiung)
+    if mbPT == 'MB':
+        result = list(cursor.execute(mb_krankmeldung).fetchall())
+        krank = "Mitarbeiter"
+    else:
+        result = list(cursor.execute(pt_krankmeldung).fetchall())
+        krank = "Patienten"
+
+    return render_template("verwaltung.html", Mitarbeiter=current_user, result=result, krank=krank)
 
 @main.route('/krankMB')
 @login_required

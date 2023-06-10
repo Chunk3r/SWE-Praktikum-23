@@ -27,16 +27,16 @@
 
         <div class="center2">
             <div class="date-container">
-                <h1>Verwaltungssicht</h1>
+		    <h1>{{krank }} Krankmeldungen</h1>
             </div>
             <div class="table-header-verwaltung">
                 <div class="button-group">
-                    <button class="rounded-button1">Mitarbeiter</button>
-                    <button class="rounded-button2">Patient</button>
+			<a href=" {{ url_for('main.verwaltung', mbPT='MB')  }}  "><button class="rounded-button1">Mitarbeiter</button></a>
+			<a href=" {{ url_for('main.verwaltung', mbPT='PT')  }}  "><button class="rounded-button2">Patient</button></a>
                 </div>
-                <div class="search-box">
+                <!--<div class="search-box">
                     <input type="text" class="search-box-text" placeholder="Suchen...">
-                </div>
+		</div>-->
                 <div class="dropdown">
                     <button class="dropdown-button">Edit</button>
                     <div class="dropdown-content">
@@ -58,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in dienstbefreiung %}
+                    {% for item in result %}
                     <tr>
                         <tr>
                             <td>{{ item[0] }}</td>
