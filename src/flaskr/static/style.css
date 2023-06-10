@@ -675,3 +675,35 @@ input[type="submit"]:hover{
 .Patient-background {
   background-color: #34C191;
 }
+
+
+/*Person Abmelden Dropdown-Menu*/
+.txt_field select {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: #f2f2f2a1;
+  border-radius: 5px;
+  padding-right: 20px;
+}
+
+.txt_field select::-ms-expand {
+  display: none;
+}
+
+/* Ein transition effect wenn man Dropdown Menu anclickt */
+.dropdownAbmelden-click:focus {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Glow-Farbe ändern */
+.dropdownAbmelden-click:focus {
+  box-shadow: 0 0 10px 4px rgb(95, 176, 255);
+}
