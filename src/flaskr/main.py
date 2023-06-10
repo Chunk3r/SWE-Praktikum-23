@@ -47,7 +47,7 @@ def verwaltung(mbPT=None):
 @main.route('/krankMB')
 @login_required
 def krankMB():
-    return render_template("krankMB.html")
+    return render_template("krankMB.html", Mitarbeiter=current_user)
 
 @main.route('/krankPT')
 @login_required
@@ -108,4 +108,23 @@ def krankPT_post():
 
 
     return redirect(url_for('main.verwaltung'))
+
+@main.route('/liste')
+@main.route('/liste/<mbPT>', methods=['GET','POST'])
+@login_required
+def liste(mbPT=None):
+    sql_MB = """ SELECT MB_ID, VorName, NachName FROM Mitarbeiter;"""
+    sql_PT = """ SELECT Kunden_ID, VorName, NachName FROM Kunde;"""
+    cursor = get_db().cursor()
+    if mbPT == 'MB':
+        result = list(cursor.execute(sql_MB).fetchall())
+        MP = "Mitarbeiter"
+    else:
+        result = list(cursor.execute(sql_PT).fetchall())
+        MP = "Patienten"
+
+    return render_template('liste.html', Mitarbeiter=current_user, result=result, MP=MP)
+
+
+
 
