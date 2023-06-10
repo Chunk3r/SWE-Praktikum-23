@@ -24,8 +24,8 @@
                                 {% endif %}
                                 {% endwith %}
 				  <div class="center">
-					<h1>Krankmeldung Mitarbeiter</h1>
-					<form method="POST" action="/krankMB">
+					<h1>Krankmeldung Patient</h1>
+					<form method="POST" action="/krankPT">
 						<div class="txt_field">
 							<input type="text" name="VorName" required>
 							<label>Vorname</label>
@@ -42,7 +42,7 @@
 							<input type="text" name="EndeDatum" required>
 							<label>Bis (YYYY-MM-DD)</label>
 						  </div>
-						<a href=" {{ url_for('main.verwaltung') }}  ">Zurück</a>
+						<a href="{{ url_for('main.verwaltung') }}">Zurück</a>
 						<input type="submit" value="Send">
 					</form>
 				</div>
