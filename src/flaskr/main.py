@@ -1,5 +1,6 @@
 import datetime
 from flask import Blueprint,flash, render_template, redirect, url_for, request
+from flaskr import dienstplan_generator
 from flaskr.db import get_db
 from flask_login import login_required, current_user
 #app = Flask(__name__)
@@ -20,6 +21,8 @@ def dienstplan():
         date = datetime.date.today()
     else:
         date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+
+    dienstplan_generator.generate_dienstplaene()
     
     # besuche aus datenbank laden
     appointments = db.execute("""SELECT *
