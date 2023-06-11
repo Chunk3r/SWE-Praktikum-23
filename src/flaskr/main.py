@@ -9,15 +9,16 @@ main = Blueprint('main', __name__)
 #    return render_template("index.html")
 
 @main.route('/dienstplan')
-#@login_required
+@login_required
 def dienstplan():
     db = get_db()
     
-    appointments = db.execute("SELECT * FROM Besuche").fetchall()
+    appointments = db.execute("SELECT * FROM Besuche WHERE Mitarbeiter_ID = ?", [current_user.NachName]).fetchall()
 
     print("appointmets:")
     for app in appointments: print(app.keys())
     print(current_user)
+    print("count", len(appointments))
     
     #return render_template("dienstplan.html", appointments=appointments, NachName=current_user.NachName)
     return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user)
