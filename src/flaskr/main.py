@@ -134,13 +134,12 @@ def anmeldenMB():
 @main.route('/anmeldenMB', methods=["POST"])
 @login_required
 def anmeldenMB_post():
-    VorName = request.form.get('VorName').split()
-    NachName = request.form.get('NachName').split()
+    VorName = request.form.get('VorName').srip()
+    NachName = request.form.get('NachName').strip()
     Position = request.form.get('Position')
     #ADRESSE FEHLT
     
-    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES ('" + VorName[0] + "', '" + NachName[0] + "', '" + str(Position) + "');"
-    print(sql_command)
+    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES ('" + VorName + "', '" + NachName + "', '" + str(Position) + "');"
     con = get_db()
     cursor = con.cursor()
 
@@ -149,19 +148,43 @@ def anmeldenMB_post():
 
     return redirect(url_for('main.liste'))
 
-@main.route('anmeldenPT')
+@main.route('/anmeldenPT')
 @login_required
 def anmeldenPT():
     return render_template("anmeldenPT.html")
 
 
-@main.route('anmeldenPT', methods=["POST"])
+@main.route('/anmeldenPT', methods=["POST"])
 @login_required
 def anmeldenPT_post():
-    VorName = request.form.get('VorName').split()
-    NachName = request.form.get('NachName').split()
+    VorName = request.form.get('VorName').strip()
+    NachName = request.form.get('NachName').strip()
     Rolle = request.form.get('Rolle')
-    Nummer = request.form.get('Nummer')
+    Nummer = request.form.get('Nummer').strip()
     Besuche = request.form.get('Besuche')
 
-    sql_command = 
+    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES('" + VorName \
+            + "', '" + NachName + "', '" + Nummer + "', '" + Rolle + "', '" + Besuche + "');"
+
+    print(sql_command)
+
+    con = get_db()
+    cursor = con.cursor()
+    cursor.execute(sql_command)
+    con.commit()
+
+    return redirect(url_for('main.liste'))
+
+
+@main.route('/confirm/<ID>-<mbPT>')
+@login_required
+def confirm(ID, mbPT):
+    return render_template('confirmation.html', ID, mbPT)
+
+@main.route('/confirm/<ID>-<mbPT>', methods=["POST"])
+@login_required
+def confirm_post(ID, mbPT):
+    print(ID)
+    print(mbPT)
+    return redirect(url_for('main.liste'))
+
