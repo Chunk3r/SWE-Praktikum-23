@@ -426,6 +426,7 @@ input[type="submit"]:hover{
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    min-height: 500px;
   }
   
   .appointment-table th,

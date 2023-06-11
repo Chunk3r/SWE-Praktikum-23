@@ -30,6 +30,11 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
+    # create dienstpläne
+    from flaskr import generator
+    with app.app_context():
+        generator.generate_dienstplaene()
+
     # blueprint for auth routes in our app
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)

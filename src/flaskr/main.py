@@ -1,3 +1,4 @@
+import datetime
 from flask import Blueprint,flash, render_template, redirect, url_for, request
 from flaskr.db import get_db
 from flask_login import login_required, current_user
@@ -9,19 +10,27 @@ main = Blueprint('main', __name__)
 #    return render_template("index.html")
 
 @main.route('/dienstplan')
-#@login_required
+@login_required
 def dienstplan():
     db = get_db()
-    
-    appointments = db.execute("SELECT * FROM Besuche").fetchall()
+    date_str = request.args.get("date", type=str)
 
-    print("appointmets:")
-    for app in appointments: print(app.keys())
-    print(current_user)
+    # wenn kein datum angegeben wurde, heutiges datum verwenden
+    if date_str == None:
+        date = datetime.date.today()
+    else:
+        date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     
-    #return render_template("dienstplan.html", appointments=appointments, NachName=current_user.NachName)
-    return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user)
+    # besuche aus datenbank laden
+    appointments = db.execute("""SELECT *
+                            FROM Besuche
+                            INNER JOIN Kunde ON Besuche.Kunden_ID = Kunde.Kunden_ID
+                            INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID
+                            WHERE Mitarbeiter_ID = ? AND Datum = ?""", [current_user.ID, date]).fetchall()
 
+    print("found ", len(appointments), " appointments")
+    
+    return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user, date=date)
 
 
 @main.route('/verwaltung', methods=["GET","POST"])
