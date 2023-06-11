@@ -17,29 +17,34 @@
           		<div class="content">
             			<h1><img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo"></h1>
           		</div>
-				{% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                        <div class="notif">
-                                                {{ messages[0] }}
-                                        </div>
-                                {% endif %}
-                                {% endwith %}
                                 <div class="center">
-                                    <h1>Neue Person hinzufügen</h1>
-                                    <form method="POST" action="/addPerson">
+                                    <h1>Neuen Patienten hinzufügen</h1>
+                                    <form method="POST" action="/anmeldenPT">
                                       <div class="txt_field">
-                                        <input type="text" name="vorname" required>
+                                        <input type="text" name="VorName" required>
                                         <label>Vorname</label>
                                       </div>
                                       <div class="txt_field">
-                                        <input type="text" name="nachname" required>
+                                        <input type="text" name="NachName" required>
                                         <label>Nachname</label>
                                       </div>
+				      <div class="txt_field">
+				      	<input type="text" name="Nummer" required>
+                                        <label>Nummer</label>
+				      </div>
+				      <div class="txt_field">
+					<input type="number" name="Besuche" required>
+                                        <label>Besuche pro Tag</label>
+				      </div>
                                       <div class="txt_field">
-                                        <input type="text" name="position" required>
-                                        <label>Position</label>
+  					<input type="radio"  name="Rolle" value="Mobil">
+  					<label for="css">Mobil</label><br>
+				      </div>
+				      <div class="txt_field">
+  					<input type="radio"  name="Rolle" value="Stationär">
+  					<label for="javascript">Stationär</label>
                                       </div>
-                                      <a href="verwaltung.html">Zurück</a>
+				      <a href="{{ url_for('main.liste') }}">Zurück</a>
                                       <input type="submit" value="Abschicken">
                                     </form>
                                   </div>

@@ -126,5 +126,42 @@ def liste(mbPT=None):
     return render_template('liste.html', Mitarbeiter=current_user, result=result, MP=MP)
 
 
+@main.route('/anmeldenMB')
+@login_required
+def anmeldenMB():
+    return render_template("anmeldenMB.html")
+
+@main.route('/anmeldenMB', methods=["POST"])
+@login_required
+def anmeldenMB_post():
+    VorName = request.form.get('VorName').split()
+    NachName = request.form.get('NachName').split()
+    Position = request.form.get('Position')
+    #ADRESSE FEHLT
+    
+    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES ('" + VorName[0] + "', '" + NachName[0] + "', '" + str(Position) + "');"
+    print(sql_command)
+    con = get_db()
+    cursor = con.cursor()
+
+    cursor.execute(sql_command)
+    con.commit()
+
+    return redirect(url_for('main.liste'))
+
+@main.route('anmeldenPT')
+@login_required
+def anmeldenPT():
+    return render_template("anmeldenPT.html")
 
 
+@main.route('anmeldenPT', methods=["POST"])
+@login_required
+def anmeldenPT_post():
+    VorName = request.form.get('VorName').split()
+    NachName = request.form.get('NachName').split()
+    Rolle = request.form.get('Rolle')
+    Nummer = request.form.get('Nummer')
+    Besuche = request.form.get('Besuche')
+
+    sql_command = 
