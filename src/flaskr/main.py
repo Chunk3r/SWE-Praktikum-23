@@ -13,7 +13,11 @@ main = Blueprint('main', __name__)
 def dienstplan():
     db = get_db()
     
-    appointments = db.execute("SELECT * FROM Besuche WHERE Mitarbeiter_ID = ?", [current_user.NachName]).fetchall()
+    appointments = db.execute("""SELECT *
+                            FROM Besuche
+                            INNER JOIN Kunde ON Besuche.Kunden_ID = Kunde.Kunden_ID
+                            INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID
+                            WHERE Mitarbeiter_ID = ?""", [current_user.ID]).fetchall()
 
     print("appointmets:")
     for app in appointments: print(app.keys())

@@ -19,8 +19,9 @@
             <ul>
 		<li><span> Willkommen {{ Mitarbeiter.NachName }} </span> </li>
 
-		<li><a href="{{ url_for('main.liste') }}">LISTE</a></li>
-		<li><a href="{{ url_for('main.verwaltung') }}">VERWALTUNG</a></li>
+        <li><a href="{{ url_for('main.dienstplan') }}">DIENSTPLAN</a></li>
+		<li><a href="{{ url_for('main.liste') }}">PERSONEN VERWALTUNG</a></li>
+		<li><a href="{{ url_for('main.verwaltung') }}">KRANKMELDUNGEN</a></li>
 		<li><a href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
             </ul>
         </nav>

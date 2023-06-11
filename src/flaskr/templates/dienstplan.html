@@ -1,78 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pflege für Alle</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='media/logo.svg') }}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="date-container">
+    <button class="date-btn" id="previous-btn">&#60;</button>
+    <span class="date">DD.MM.YYYY</span>
+    <button class="date-btn" id="next-btn">&#62;</button>
+</div>
+<table class="appointment-table">
+    <thead>
+        <tr>
+            <th>Uhrzeit</th>
+            <th>Patient</th>
+            <th>Tel.</th>
+            <th>Rolle</th>
+            <th>Ort</th>
+            <th>Wohnraum</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in appointments %}
+            <tr>
+                <td>{{ item["Uhrzeit"] }}</td>
+                <td>{{ item["VorName"] }} {{ item["NachName"] }}</td>
+                <td>{{ item["TelefonNummer"] }}</td>
+                <td>{{ item["Rolle"] }}</td>
+                <td>{{ item["Straße"] }} {{ item["Hausnummer"] }}, {{ item["PLZ"] }} {{ item["Ort"] }}</td>
+                <td>{{ item["Wohnraum"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    const previousBtn = document.getElementById('previous-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dateElement = document.querySelector('.date');
 
-    <div class="mainBackground">
+    let currentDate = new Date();
 
-        <video autoplay loop muted plays-inline class="back-video">
-            <source src="{{ url_for('static', filename='media/videoclip.mp4') }}" type="video/mp4">
-        </video>
-
-        <nav>
-            <img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo1">
-            <ul>
-		<li><span> Willkommen {{ Mitarbeiter.NachName }} </span> </li>
-		<li><a href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
-                <li><a href="/dienstplan">DIENSTPLAN</a></li>
-            </ul>
-        </nav>
-
-        <div class="center2">
-            <div class="date-container">
-                <button class="date-btn" id="previous-btn">&#60;</button>
-                <span class="date">DD.MM.YYYY</span>
-                <button class="date-btn" id="next-btn">&#62;</button>
-            </div>
-            <table class="appointment-table">
-                <thead>
-                    <tr>
-                        <th>Uhrzeit</th>
-                        <th>Patient</th>
-                        <th>Ort</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in appointments %}
-                        <tr>
-                            <td>{{ item[4] }}</td>
-                            <td>Kunden Id: {{ item[1] }}</td>
-                            <td>TODO</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <script>
-        const previousBtn = document.getElementById('previous-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const dateElement = document.querySelector('.date');
-    
-        let currentDate = new Date();
-    
-        previousBtn.addEventListener('click', () => {
-            currentDate.setDate(currentDate.getDate() - 1);
-            updateDate();
-        });
-    
-        nextBtn.addEventListener('click', () => {
-            currentDate.setDate(currentDate.getDate() + 1);
-            updateDate();
-        });
-    
-        function updateDate() {
-            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            const formattedDate = currentDate.toLocaleDateString('en-GB', options);
-            dateElement.textContent = formattedDate;
-        }
-    
+    previousBtn.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() - 1);
         updateDate();
-    </script>
-</body>
-</html>
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() + 1);
+        updateDate();
+    });
+
+    function updateDate() {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = currentDate.toLocaleDateString('en-GB', options);
+        dateElement.textContent = formattedDate;
+    }
+
+    updateDate();
+</script>
+{% endblock %}
