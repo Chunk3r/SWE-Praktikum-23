@@ -26,7 +26,7 @@
         <div class="center">
             <h1>Zur Bestätigung bitte "ENTFERNEN" schreiben.</h1>
 	    <!--<form method="POST" action="/addPerson" onsubmit="return validateForm()">-->
-	      <form method="POST" action="/confirm" >
+	    <form method="POST" action="/confirm/{{ID}}-{{mbPT}}" >
               <div class="txt_field">
                 <input type="text" name="Valid" id="vorname" required>
                 <label>Bestätigungswort</label>

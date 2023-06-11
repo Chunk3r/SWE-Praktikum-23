@@ -131,7 +131,7 @@ def liste(mbPT=None):
     else:
         result = list(cursor.execute(sql_PT).fetchall())
         MP = "Patienten"
-
+    print(MP)
     return render_template('liste.html', Mitarbeiter=current_user, result=result, MP=MP)
 
 
@@ -184,16 +184,37 @@ def anmeldenPT_post():
 
     return redirect(url_for('main.liste'))
 
-
+@main.route('/confirm')
 @main.route('/confirm/<ID>-<mbPT>')
 @login_required
 def confirm(ID, mbPT):
-    return render_template('confirmation.html', ID, mbPT)
+    print(ID)
+    print(mbPT)
+    return render_template('confirmation.html', ID=ID, mbPT=mbPT)
 
 @main.route('/confirm/<ID>-<mbPT>', methods=["POST"])
 @login_required
 def confirm_post(ID, mbPT):
     print(ID)
     print(mbPT)
+    if mbPT == "Patienten":
+        Tabelle = "Kunde"
+        T_ID = "Kunden_ID"
+    else:
+        Tabelle = "Mitarbeiter"
+        T_ID = "MB_ID"
+
+    confirm = request.form.get('Valid')
+    if confirm != "ENTFERNEN":
+        flash("Falsches PW!")
+    else:
+        sql_command = "DELETE FROM " + Tabelle + " WHERE " + T_ID + "=" + str(ID) +";"
+        print(sql_command)
+        con = get_db()
+        cursor = con.cursor()
+        cursor.execute(sql_command)
+        con.commit()
+
+
     return redirect(url_for('main.liste'))
 
