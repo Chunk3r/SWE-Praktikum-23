@@ -34,24 +34,22 @@
     const nextBtn = document.getElementById('next-btn');
     const dateElement = document.querySelector('.date');
 
-    let currentDate = new Date();
+    let currentDate = new Date("{{ date }}");
 
     previousBtn.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() - 1);
-        updateDate();
+        const newFormattedDate = currentDate.toISOString().replace(/T.*/,'')
+        window.location.replace("/dienstplan?date=" + newFormattedDate);
     });
 
     nextBtn.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() + 1);
-        updateDate();
+        const newFormattedDate = currentDate.toISOString().replace(/T.*/,'')
+        window.location.replace("/dienstplan?date=" + newFormattedDate);
     });
 
-    function updateDate() {
-        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        const formattedDate = currentDate.toLocaleDateString('en-GB', options);
-        dateElement.textContent = formattedDate;
-    }
-
-    updateDate();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formattedDate = currentDate.toLocaleDateString('en-GB', options);
+    dateElement.textContent = formattedDate;
 </script>
 {% endblock %}

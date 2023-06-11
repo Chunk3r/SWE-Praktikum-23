@@ -1,3 +1,4 @@
+import datetime
 from flask import Blueprint,flash, render_template, redirect, url_for, request
 from flaskr.db import get_db
 from flask_login import login_required, current_user
@@ -12,12 +13,19 @@ main = Blueprint('main', __name__)
 @login_required
 def dienstplan():
     db = get_db()
+    date_str = request.args.get("date", type=str)
+
+    # wenn kein datum angegeben wurde, heutiges datum verwenden
+    if date_str == None:
+        date = datetime.date.today()
+    else:
+        date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     
     appointments = db.execute("""SELECT *
                             FROM Besuche
                             INNER JOIN Kunde ON Besuche.Kunden_ID = Kunde.Kunden_ID
                             INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID
-                            WHERE Mitarbeiter_ID = ?""", [current_user.ID]).fetchall()
+                            WHERE Mitarbeiter_ID = ? AND Datum = ?""", [current_user.ID, date]).fetchall()
 
     print("appointmets:")
     for app in appointments: print(app.keys())
@@ -25,7 +33,7 @@ def dienstplan():
     print("count", len(appointments))
     
     #return render_template("dienstplan.html", appointments=appointments, NachName=current_user.NachName)
-    return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user)
+    return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user, date=date)
 
 
 
