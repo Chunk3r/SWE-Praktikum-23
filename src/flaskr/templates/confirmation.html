@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pflege für Alle</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="icon" href="{{ url_for('static', filename='media/logo.svg') }}">
+	</head>
+
+    	<body>
+        	<div class="mainBackground">
+    
+          		<video autoplay loop muted plays-inline class="back-video">
+              			<source src="{{ url_for('static', filename='media/videoclip.mp4') }}" type="video/mp4">
+          		</video>
+    
+          		<div class="content">
+            			<h1><img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo"></h1>
+          		</div>
+				{% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                        <div class="notif">
+                                                {{ messages[0] }}
+                                        </div>
+                                {% endif %}
+                                {% endwith %}
+        <div class="center">
+            <h1>Zur Bestätigung bitte "ENTFERNEN" schreiben.</h1>
+            <form method="POST" action="/addPerson" onsubmit="return validateForm()">
+              <div class="txt_field">
+                <input type="text" name="vorname" id="vorname" required>
+                <label>Bestätigungswort</label>
+              </div>
+              <a href="liste.html">Zurück</a>
+              <input type="submit" value="Bestätigen" id="submitBtn">
+            </form>
+          </div>
+        </div>
+
+        <script>
+            function validateForm() {
+                var inputText = document.getElementById("vorname").value;
+                var submitBtn = document.getElementById("submitBtn");
+
+                if (inputText !== "ENTFERNEN") {
+                    alert("Eingabe falsch. Bitte versuchen Sie es erneut.");
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
+                              

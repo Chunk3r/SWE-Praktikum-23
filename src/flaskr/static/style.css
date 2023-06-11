@@ -615,14 +615,16 @@ input[type="submit"]:hover{
 .verwaltung-table th,
 .verwaltung-table td {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  padding: 10px;
+  text-align: center;
 }
 
 .verwaltung-table th {
   background-color: #f2f2f2;
+  border-collapse: collapse;
+  margin-top: 20px; 
 }
-
+/*****************************************************/
 
 /*Die Pfeile unten bei Verwaltung.html*/
 .pfeil-buttons {
@@ -706,4 +708,22 @@ input[type="submit"]:hover{
 /* Glow-Farbe ändern */
 .dropdownAbmelden-click:focus {
   box-shadow: 0 0 10px 4px rgb(95, 176, 255);
+}
+
+
+
+
+/*"Entfernen"-Button in liste.html*/
+.entfernen-button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #2691d9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.entfernen-button:hover {
+    background-color: #1c6ea4;
 }
