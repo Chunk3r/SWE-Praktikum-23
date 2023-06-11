@@ -21,20 +21,16 @@ def dienstplan():
     else:
         date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     
+    # besuche aus datenbank laden
     appointments = db.execute("""SELECT *
                             FROM Besuche
                             INNER JOIN Kunde ON Besuche.Kunden_ID = Kunde.Kunden_ID
                             INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID
                             WHERE Mitarbeiter_ID = ? AND Datum = ?""", [current_user.ID, date]).fetchall()
 
-    print("appointmets:")
-    for app in appointments: print(app.keys())
-    print(current_user)
-    print("count", len(appointments))
+    print("found ", len(appointments), " appointments")
     
-    #return render_template("dienstplan.html", appointments=appointments, NachName=current_user.NachName)
     return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user, date=date)
-
 
 
 @main.route('/verwaltung', methods=["GET","POST"])

@@ -5,6 +5,7 @@
     <span class="date">DD.MM.YYYY</span>
     <button class="date-btn" id="next-btn">&#62;</button>
 </div>
+{% if appointments.__len__() > 0 %}
 <table class="appointment-table">
     <thead>
         <tr>
@@ -29,6 +30,11 @@
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+<div class="appointment-table">
+  <h3 style="text-align: center; margin-top: 30px;">Es konnten keine Besuche für diesen Tag gefunden werden</h3>
+</div>
+{% endif %}
 <script>
     const previousBtn = document.getElementById('previous-btn');
     const nextBtn = document.getElementById('next-btn');
