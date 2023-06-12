@@ -261,5 +261,17 @@ def existsUser(VorName, NachName, mbPT):
 
     return True
     
-def collectAdress():
-    pass
+def existsAdress(Strasse, HNum, PLZ, Stadt, Room=None):
+    AdresseKlinik = [ "Reinarzstraße", "49", 47805, "Krefeld" ]
+    con = get_db()
+    cursor = con.cursor()
+
+    adresse = [ Strasse, HNum, PLZ, Stadt ]
+    if(set(AdresseKlinik) == set(adresse)):
+        belegteRaume = list( cursor.execute(" SELECT Wohnraum FROM Adresse;  ").fetchall()  ) 
+    else:
+        resultID = cursor.execute("SELECT Adresse_ID FROM ADRESSE WHERE Straße=? AND Hausnummer=? AND PLZ=? AND ORT=?; ", adresse).fetchone()
+        if resultID:
+            return True
+        else:
+            return False
