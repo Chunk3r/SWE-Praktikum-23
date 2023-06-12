@@ -19,6 +19,9 @@ pip install flask flask_login
 
 ### Datenbank initialisieren
 ```sh
+# wenn nötig alte datenbank löschen
+rm src/instance/flaskr.sqlite
+
 python -m flask --app src/flaskr init-db
 ```
 
