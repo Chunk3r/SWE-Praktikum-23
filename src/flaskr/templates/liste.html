@@ -19,7 +19,8 @@
                     </div>
                 </div>
             </div>
-
+            <!--Table.Container ist für die ScrollBar-->
+    <div class="table-container">
             <table class="verwaltung-table">
                 <thead>
                     <tr>
@@ -41,60 +42,7 @@
                     {% endfor %}
                 </tbody>
             </table>
- <div class="pfeil-buttons">
-    <button id="prevButton" class="pfeil-buttonL" onclick="showPrevRows()">◀</button>
-    <button id="nextButton" class="pfeil-buttonR" onclick="showNextRows()">▶</button>
 </div>
 </div>
-
-<!--JavaScript für die Buttons -->
-<script>
-    var table = document.getElementById("verwaltung-table");
-    var tableBody = document.getElementById("table-body");
-    var prevButton = document.getElementById("prevButton");
-    var nextButton = document.getElementById("nextButton");
-
-    var startIndex = 0;
-    var endIndex = 9;
-    var numRows = {{ result|length }};
-
-    function showRows(start, end) {
-        for (var i = 0; i < numRows; i++) {
-            if (i >= start && i <= end) {
-                table.rows[i + 1].style.display = "table-row";
-            } else {
-                table.rows[i + 1].style.display = "none";
-            }
-        }
-    }
-
-    function showPrevRows() {
-        if (startIndex > 0) {
-            startIndex -= 10;
-            endIndex -= 10;
-            showRows(startIndex, endIndex);
-            nextButton.disabled = false;
-        }
-
-        if (startIndex === 0) {
-            prevButton.disabled = true;
-        }
-    }
-
-    function showNextRows() {
-        if (endIndex < numRows - 1) {
-            startIndex += 10;
-            endIndex += 10;
-            showRows(startIndex, endIndex);
-            prevButton.disabled = false;
-        }
-
-        if (endIndex === numRows - 1) {
-            nextButton.disabled = true;
-        }
-    }
-
-    showPrevRows(); 
-</script>
 
 {% endblock %}

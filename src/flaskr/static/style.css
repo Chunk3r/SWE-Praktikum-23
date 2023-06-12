@@ -628,6 +628,7 @@ input[type="submit"]:hover{
 /*****************************************************/
 
 /*Die Pfeile unten bei Verwaltung.html*/
+/*
 .pfeil-buttons {
   display: flex;
   align-items: center;
@@ -668,6 +669,8 @@ input[type="submit"]:hover{
 .pfeil-buttonR:hover {
   color: black;
 }
+*/
+
 
 
 /*Farben von "Mitarbeiter" bzw. "Patient" Table-Rows in "Verwaltung.html"*/
@@ -727,4 +730,12 @@ input[type="submit"]:hover{
 
 .entfernen-button:hover {
     background-color: #1c6ea4;
+}
+
+
+
+.table-container {
+  max-height: 200px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 20px; /* Adjust margin as needed */
 }
