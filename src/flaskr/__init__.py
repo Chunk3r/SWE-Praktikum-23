@@ -31,9 +31,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # create dienstpläne
-    from flaskr import generator
-    with app.app_context():
-        generator.generate_dienstplaene()
+    #from flaskr import dienstplan_generator
+    #with app.app_context():
+    #    dienstplan_generator.generate_dienstplaene()
 
     # blueprint for auth routes in our app
     from .auth import auth as auth_blueprint

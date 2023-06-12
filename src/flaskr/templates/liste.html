@@ -19,7 +19,8 @@
                     </div>
                 </div>
             </div>
-
+            <!--Table.Container ist für die ScrollBar-->
+    <div class="table-container">
             <table class="verwaltung-table">
                 <thead>
                     <tr>
@@ -41,9 +42,13 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="pfeil-buttons">
-                <button id="prevButton" class="pfeil-buttonL">◀</button>
-                <button id="nextButton" class="pfeil-buttonR">▶</button>
-            </div>
-        </div>
+</div>
+<!--Pfeil-Buttons unten
+ <div class="pfeil-buttons">
+    <button id="prevButton" class="pfeil-buttonL" onclick="showPrevRows()">◀</button>
+    <button id="nextButton" class="pfeil-buttonR" onclick="showNextRows()">▶</button>
+</div>
+-->
+</div>
+
 {% endblock %}
