@@ -36,6 +36,9 @@ def dienstplan():
     return render_template("dienstplan.html", appointments=appointments, Mitarbeiter=current_user, date=date)
 
 
+
+
+
 @main.route('/verwaltung', methods=["GET","POST"])
 @main.route('/verwaltung/<mbPT>', methods=["GET","POST"])
 @login_required
@@ -56,16 +59,20 @@ def verwaltung(mbPT=None):
 
     return render_template("verwaltung.html", Mitarbeiter=current_user, result=result, krank=krank)
 
+
+
+
+
 @main.route('/krankMB')
 @login_required
 def krankMB():
     return render_template("krankMB.html", Mitarbeiter=current_user)
 
+
 @main.route('/krankPT')
 @login_required
 def krankPT():
     return render_template("krankPT.html")
-
 
 
 @main.route('/krankMB', methods=["POST"])
@@ -75,25 +82,25 @@ def krankMB_post():
     NachName = request.form.get('NachName').strip()
     VonDatum = request.form.get('VonDatum').strip()
     EndeDatum = request.form.get('EndeDatum').strip()
-    
-    ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE VorName='" + VorName + "' AND NachName='" + NachName +  "'; "
-   
+
+    ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
 
     conn = get_db()
     cursor = conn.cursor()
 
-    ID = cursor.execute(ID_cmd).fetchone()
+    ID = cursor.execute(ID_cmd, [VorName,NachName] ).fetchone()
+    #Existiert Mitarbeiter?
     if not ID:
-
         flash("Nutzer nicht gefunden")
         return redirect(url_for('main.krankMB'))
 
-
-    sql_cmd = "INSERT INTO Dienstbefreiung_Mitarbeiter(Mitarbeiter_ID, Start_Datum, Ende_Datum) VALUES (" + str(ID[0]) + " , '" + VonDatum + "' , '" + EndeDatum + "');"
-    cursor.execute(sql_cmd)
+    #Schreibe Krankschreibung
+    sql_command = "INSERT INTO Dienstbefreiung_Mitarbeiter(Mitarbeiter_ID, Start_Datum, Ende_Datum) VALUES ( ?, ?, ?);"
+    cursor.execute(sql_command, [str(ID[0]), VonDatum, EndeDatum])
     conn.commit()
 
     return redirect(url_for('main.verwaltung'))
+
 
 @main.route('/krankPT', methods=["POST"])
 @login_required
@@ -103,23 +110,27 @@ def krankPT_post():
     VonDatum = request.form.get('VonDatum').strip()
     EndeDatum = request.form.get('EndeDatum').strip()
     
-    ID_cmd = "SELECT Kunden_ID FROM Kunde WHERE VorName='" + VorName + "' AND NachName='" + NachName +  "'; "
+    ID_cmd = "SELECT Kunden_ID FROM Kunde WHERE VorName=? AND NachName=?;"
 
     conn = get_db()
     cursor = conn.cursor()
-    ID = cursor.execute(ID_cmd).fetchone()
+    ID = cursor.execute(ID_cmd, [VorName, NachName]).fetchone()
+    #Existiert Patient?
     if not ID:
         flash("Patient nicht gefunden")
         return redirect(url_for('main.krankPT'))
 
-
-    sql_cmd = "INSERT INTO Krankschreibung_Kunde(Kunden_ID, Start_Datum, Ende_Datum) VALUES (" + str(ID[0]) + " , '" + VonDatum + "' , '" + EndeDatum + "');"
-    
-    cursor.execute(sql_cmd)
+    #Schreibe Krankschreibung
+    sql_command = "INSERT INTO Krankschreibung_Kunde(Kunden_ID, Start_Datum, Ende_Datum) VALUES ( ?, ?, ?);"
+    cursor.execute(sql_command, [str(ID[0]), VonDatum, EndeDatum])
     conn.commit()
 
 
     return redirect(url_for('main.verwaltung'))
+
+
+
+
 
 @main.route('/liste')
 @main.route('/liste/<mbPT>', methods=['GET','POST'])
@@ -138,27 +149,32 @@ def liste(mbPT=None):
     return render_template('liste.html', Mitarbeiter=current_user, result=result, MP=MP)
 
 
+
+
+
 @main.route('/anmeldenMB')
 @login_required
 def anmeldenMB():
     return render_template("anmeldenMB.html")
 
+
 @main.route('/anmeldenMB', methods=["POST"])
 @login_required
 def anmeldenMB_post():
-    VorName = request.form.get('VorName').srip()
+    VorName = request.form.get('VorName').strip()
     NachName = request.form.get('NachName').strip()
     Position = request.form.get('Position')
     #ADRESSE FEHLT
     
-    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES ('" + VorName + "', '" + NachName + "', '" + str(Position) + "');"
+    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES (?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
 
-    cursor.execute(sql_command)
+    cursor.execute(sql_command, [VorName, NachName, str(Position)])
     con.commit()
 
     return redirect(url_for('main.liste'))
+
 
 @main.route('/anmeldenPT')
 @login_required
@@ -174,18 +190,21 @@ def anmeldenPT_post():
     Rolle = request.form.get('Rolle')
     Nummer = request.form.get('Nummer').strip()
     Besuche = request.form.get('Besuche')
+     
+    
 
-    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES('" + VorName \
-            + "', '" + NachName + "', '" + Nummer + "', '" + Rolle + "', '" + Besuche + "');"
-
-    print(sql_command)
-
+    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
-    cursor.execute(sql_command)
+    res = cursor.execute(sql_command, [VorName, NachName, Rolle, Nummer, Besuche])
+    print(res)
     con.commit()
 
     return redirect(url_for('main.liste'))
+
+
+
+
 
 @main.route('/confirm')
 @main.route('/confirm/<ID>-<mbPT>')
@@ -194,6 +213,7 @@ def confirm(ID, mbPT):
     print(ID)
     print(mbPT)
     return render_template('confirmation.html', ID=ID, mbPT=mbPT)
+
 
 @main.route('/confirm/<ID>-<mbPT>', methods=["POST"])
 @login_required
@@ -211,13 +231,35 @@ def confirm_post(ID, mbPT):
     if confirm != "ENTFERNEN":
         flash("Falsches PW!")
     else:
-        sql_command = "DELETE FROM " + Tabelle + " WHERE " + T_ID + "=" + str(ID) +";"
-        print(sql_command)
+        #sql_command = f"DELETE FROM {Tabelle} WHERE {T_ID}={ID};"
         con = get_db()
         cursor = con.cursor()
-        cursor.execute(sql_command)
+        cursor.execute("DELETE FROM ? WHERE ?=?;", [Tabelle, T_ID, ID])
         con.commit()
 
 
     return redirect(url_for('main.liste'))
 
+def existsUser(VorName, NachName, mbPT):
+    con = get_db()
+    cursor = con.cursor()
+
+    print(VorName)
+    print(NachName)
+    print(mbPT)
+    if mbPT == "Mitarbeiter":
+        ID = "MB_ID"
+        Tabelle = "Mitarbeiter"
+        sql_command = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
+    else:
+        ID = "Kunden_ID"
+        Tabelle = "Kunde"
+        sql_command = "SELECT Kunden_ID FROM Kunde WHERE VorName=? AND NachName=?;"
+    result = cursor.execute(sql_command, [VorName, NachName ]).fetchone()
+    if not result:
+        return False
+
+    return True
+    
+def collectAdress():
+    pass
