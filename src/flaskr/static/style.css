@@ -735,7 +735,7 @@ input[type="submit"]:hover{
 
 
 .table-container {
-  max-height: 600px; /* Set the maximum height for the container */
+  max-height: 420px; /* Set the maximum height for the container */
   overflow-y: auto; /* Enable vertical scrolling */
   margin-top: 20px; /* Adjust margin as needed */
 }
