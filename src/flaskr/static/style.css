@@ -277,7 +277,7 @@ margin-top: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 430px;
+  width: 40%;
   background: rgba(255, 255, 255, 0.788);
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
@@ -733,9 +733,33 @@ input[type="submit"]:hover{
 }
 
 
-
+/*Die ScrollBar*/
 .table-container {
-  max-height: 420px; /* Set the maximum height for the container */
-  overflow-y: auto; /* Enable vertical scrolling */
-  margin-top: 20px; /* Adjust margin as needed */
+  max-height: 420px; 
+  overflow-y: auto; 
+  margin-top: 20px; 
+}
+
+
+/*Anmeldeformular 2 Spalten*/
+.txt_field {
+  display: inline-block; 
+  width: calc(50% - 10px); 
+  margin-right: 10px; /* Add margin between the text fields */
+}
+
+.txt_field:nth-child(2n) {
+  margin-right: 0; /* Remove the margin for the last text field in each row */
+}
+
+
+.radio-btn {
+  transform: scale(0.8); /* Adjust the scale value as needed */
+  padding-top: 20px;
+}
+
+
+.radio-field {
+  display: flex;
+  flex-direction: column;
 }
