@@ -79,21 +79,19 @@ def krankMB_post():
     NachName = request.form.get('NachName').strip()
     VonDatum = request.form.get('VonDatum').strip()
     EndeDatum = request.form.get('EndeDatum').strip()
-    
-    #ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE VorName='" + VorName + "' AND NachName='" + NachName +  "'; "
+
     ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
 
     conn = get_db()
     cursor = conn.cursor()
 
     ID = cursor.execute(ID_cmd, [VorName,NachName] ).fetchone()
+    #Existiert Mitarbeiter?
     if not ID:
-
         flash("Nutzer nicht gefunden")
         return redirect(url_for('main.krankMB'))
 
-
-    #sql_cmd = "INSERT INTO Dienstbefreiung_Mitarbeiter(Mitarbeiter_ID, Start_Datum, Ende_Datum) VALUES (" + str(ID[0]) + " , '" + VonDatum + "' , '" + EndeDatum + "');"
+    #Schreibe Krankschreibung
     sql_command = "INSERT INTO Dienstbefreiung_Mitarbeiter(Mitarbeiter_ID, Start_Datum, Ende_Datum) VALUES ( ?, ?, ?);"
     cursor.execute(sql_command, [str(ID[0]), VonDatum, EndeDatum])
     conn.commit()
@@ -114,11 +112,12 @@ def krankPT_post():
     conn = get_db()
     cursor = conn.cursor()
     ID = cursor.execute(ID_cmd, [VorName, NachName]).fetchone()
+    #Existiert Patient?
     if not ID:
         flash("Patient nicht gefunden")
         return redirect(url_for('main.krankPT'))
 
-
+    #Schreibe Krankschreibung
     sql_command = "INSERT INTO Krankschreibung_Kunde(Kunden_ID, Start_Datum, Ende_Datum) VALUES ( ?, ?, ?);"
     cursor.execute(sql_command, [str(ID[0]), VonDatum, EndeDatum])
     conn.commit()
@@ -164,7 +163,6 @@ def anmeldenMB_post():
     Position = request.form.get('Position')
     #ADRESSE FEHLT
     
-    #sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES ('" + VorName + "', '" + NachName + "', '" + str(Position) + "');"
     sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES (?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
@@ -189,9 +187,9 @@ def anmeldenPT_post():
     Rolle = request.form.get('Rolle')
     Nummer = request.form.get('Nummer').strip()
     Besuche = request.form.get('Besuche')
+     
+    
 
-    #sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES('" + VorName \
-    #        + "', '" + NachName + "', '" + Nummer + "', '" + Rolle + "', '" + Besuche + "');"
     sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
@@ -239,3 +237,26 @@ def confirm_post(ID, mbPT):
 
     return redirect(url_for('main.liste'))
 
+def existsUser(VorName, NachName, mbPT):
+    con = get_db()
+    cursor = con.cursor()
+
+    print(VorName)
+    print(NachName)
+    print(mbPT)
+    if mbPT == "Mitarbeiter":
+        ID = "MB_ID"
+        Tabelle = "Mitarbeiter"
+        sql_command = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
+    else:
+        ID = "Kunden_ID"
+        Tabelle = "Kunde"
+        sql_command = "SELECT Kunden_ID FROM Kunde WHERE VorName=? AND NachName=?;"
+    result = cursor.execute(sql_command, [VorName, NachName ]).fetchone()
+    if not result:
+        return False
+
+    return True
+    
+def collectAdress():
+    pass
