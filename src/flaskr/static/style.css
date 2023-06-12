@@ -763,3 +763,8 @@ input[type="submit"]:hover{
   display: flex;
   flex-direction: column;
 }
+
+.anmeldenMB-zuruck{
+  display: flex;
+  flex-direction: column;
+}
