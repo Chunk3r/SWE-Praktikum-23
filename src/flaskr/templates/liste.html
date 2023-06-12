@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in result[:10] %}
+                    {% for item in result %}
                     <tr>
                         <tr>
                             <td>{{ item[0] }}</td>
@@ -43,6 +43,12 @@
                 </tbody>
             </table>
 </div>
+<!--Pfeil-Buttons unten
+ <div class="pfeil-buttons">
+    <button id="prevButton" class="pfeil-buttonL" onclick="showPrevRows()">◀</button>
+    <button id="nextButton" class="pfeil-buttonR" onclick="showNextRows()">▶</button>
+</div>
+-->
 </div>
 
 {% endblock %}
