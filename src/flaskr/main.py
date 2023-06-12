@@ -56,7 +56,7 @@ def verwaltung(mbPT=None):
     else:
         result = list(cursor.execute(pt_krankmeldung).fetchall())
         krank = "Patienten"
-
+    getRaum()
     return render_template("verwaltung.html", Mitarbeiter=current_user, result=result, krank=krank)
 
 
@@ -190,13 +190,25 @@ def anmeldenPT_post():
     Rolle = request.form.get('Rolle')
     Nummer = request.form.get('Nummer').strip()
     Besuche = request.form.get('Besuche')
-     
+    Strasse = request.form.get('Straße').strip()
+    HNum = request.form.get('Hausnummer').strip()
+    PLZ = request.form.get('PLZ').strip()
+    Ort = request.form.get('Ort').strip()
     
+    if Rolle == "Stationär":
+        RaumNummer = getRaum() # get free Room as local patient
+        AdresseID = setRoomgetID(RaumNummer)
+    else:
+        AdresseID = setAdressegetID(Strasse, HNum, PLZ, Ort)
 
-    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
+    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag, Adresse) VALUES (?, ?, ?, ?, ?, ?);" 
+    sql_liste = [VorName, NachName, Nummer,Rolle, Besuche, AdresseID]
+
+
+    #sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
-    res = cursor.execute(sql_command, [VorName, NachName, Rolle, Nummer, Besuche])
+    res = cursor.execute(sql_command, sql_liste)
     print(res)
     con.commit()
 
@@ -261,17 +273,47 @@ def existsUser(VorName, NachName, mbPT):
 
     return True
     
-def existsAdress(Strasse, HNum, PLZ, Stadt, Room=None):
+def getRaum():
+    raumListe = [ x for x in range(1,150)  ]
+    cursor = get_db().cursor()
+    result = list(cursor.execute("SELECT Wohnraum FROM Adresse;").fetchall())
+    belegteRaume = []
+    for i in result:
+        belegteRaume.append( i[0])
+    
+    diffList = list(set(raumListe).difference(belegteRaume))
+
+    if diffList:
+        return diffList[0]
+    else:
+        return None
+
+
+def setAdressegetID(Strasse, HNum, PLZ, Stadt):
+    con = get_db()
+    cursor = con.cursor()
+    adresse = [ Strasse, HNum, PLZ, Stadt ]
+    sql_select = "SELECT Adresse_ID FROM Adresse WHERE Straße=? AND Hausnummer=? AND PLZ=? AND Ort=?;"
+    res = cursor.execute(sql_select, adresse).fetchone() 
+    if not res:
+        cursor.execute("INSERT INTO Adresse(Straße, Hausnummer, PLZ, Ort) VALUES (?,?,?,?);",adresse)
+        con.commit()
+        res = list(cursor.execute(sql_select, adresse).fetchone())
+        return res[0]
+    else:
+        res = list(res)
+        return res[0]
+
+
+
+def setRoomgetID(Room):
     AdresseKlinik = [ "Reinarzstraße", "49", 47805, "Krefeld" ]
+    AdresseKlinik.append(Room)
     con = get_db()
     cursor = con.cursor()
 
-    adresse = [ Strasse, HNum, PLZ, Stadt ]
-    if(set(AdresseKlinik) == set(adresse)):
-        belegteRaume = list( cursor.execute(" SELECT Wohnraum FROM Adresse;  ").fetchall()  ) 
-    else:
-        resultID = cursor.execute("SELECT Adresse_ID FROM ADRESSE WHERE Straße=? AND Hausnummer=? AND PLZ=? AND ORT=?; ", adresse).fetchone()
-        if resultID:
-            return True
-        else:
-            return False
+    cursor.execute( "INSERT INTO Adresse(Straße, Hausnummer, PLZ, Ort, Wohnraum) VALUES (?, ?, ?, ?, ? );", AdresseKlinik )
+    con.commit()
+    res = list(cursor.execute("SELECT Adresse_ID FROM Adresse WHERE Wohnraum=? AND Straße='Reinarzstraße';", [Room]  ).fetchone())
+
+    return res[0]
