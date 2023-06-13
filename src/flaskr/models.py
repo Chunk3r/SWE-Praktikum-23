@@ -2,10 +2,10 @@ from flask_login import UserMixin, login_user
 import sqlite3
 from . import db#, login_manager
 class Mitarbeiter(UserMixin):
-    def __init__(self, ID, VorName, NachName, Rolle=None):
+    def __init__(self, ID, Vorname, Nachname, Rolle=None):
         self.ID = ID
-        self.VorName = VorName
-        self.NachName = NachName
+        self.Vorname = Vorname
+        self.Nachname = Nachname
         self.authenticated = False
         self.Rolle = Rolle
 
@@ -29,7 +29,7 @@ class Mitarbeiter(UserMixin):
 def load_user(user_id):
     conn = db.get_db()
     curs = conn.cursor()
-    curs.execute(f"SELECT MB_ID, VorName, NachName FROM Mitarbeiter WHERE MB_ID='{user_id}';")
+    curs.execute(f"SELECT MB_ID, Vorname, Nachname FROM Mitarbeiter WHERE MB_ID='{user_id}';")
     result = curs.fetchone()
     if result is None:
         return None

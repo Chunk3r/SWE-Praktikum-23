@@ -26,11 +26,11 @@
                                     <h1>Neuen Mitarbeiter hinzufügen</h1>
                                     <form method="POST" action="/anmeldenMB">
                                       <div class="txt_field">
-                                        <input type="text" name="VorName" required>
+                                        <input type="text" name="Vorname" required>
                                         <label>Vorname</label>
                                       </div>
                                       <div class="txt_field">
-                                        <input type="text" name="NachName" required>
+                                        <input type="text" name="Nachname" required>
                                         <label>Nachname</label>
                                       </div>
                                       <div class="txt_field">
@@ -60,12 +60,12 @@
                                     </div>
                                     <div class="radio-field">
                                       <div class="txt_field">
-                                        <input type="radio" name="Position" value="Pflege-Stationär" class="radio-btn">
-                                        <label for="javascript">Pflege - Stationär</label>
+                                        <input type="radio" name="Position" value="Pflege-Stationaer" class="radio-btn">
+                                        <label for="javascript">Pflege - Stationaer</label>
                                       </div>
                                     </div>
 
-				      <a href="{{ url_for('main.liste') }}">Zurück</a>
+				      <a href="{{ url_for('main.mitarbeiter_liste') }}">Zurück</a>
                                       <input type="submit" value="Abschicken">
                                     </form>
                                   </div>

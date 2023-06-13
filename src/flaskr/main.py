@@ -41,9 +41,9 @@ def dienstplan():
 @login_required
 def verwaltung(mbPT=None):
     cursor = get_db().cursor()
-    mb_krankmeldung = """SELECT Mitarbeiter.VorName, Mitarbeiter.NachName, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
+    mb_krankmeldung = """SELECT Mitarbeiter.Vorname, Mitarbeiter.Nachname, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
             FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;"""
-    pt_krankmeldung = """ SELECT Kunde.VorName, Kunde.NachName, Krankschreibung_Kunde.Start_Datum, Krankschreibung_Kunde.Ende_Datum
+    pt_krankmeldung = """ SELECT Kunde.Vorname, Kunde.Nachname, Krankschreibung_Kunde.Start_Datum, Krankschreibung_Kunde.Ende_Datum
             FROM Krankschreibung_Kunde JOIN Kunde ON Kunde.Kunden_ID = Krankschreibung_Kunde.Kunden_ID;"""
 
 
@@ -75,17 +75,17 @@ def krankPT():
 @main.route('/krankMB', methods=["POST"])
 @login_required
 def krankMB_post():
-    VorName = request.form.get('VorName').strip()
-    NachName = request.form.get('NachName').strip()
+    Vorname = request.form.get('Vorname').strip()
+    Nachname = request.form.get('Nachname').strip()
     VonDatum = request.form.get('VonDatum').strip()
     EndeDatum = request.form.get('EndeDatum').strip()
 
-    ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
+    ID_cmd = "SELECT MB_ID FROM Mitarbeiter WHERE Vorname=? AND Nachname=?;"
 
     conn = get_db()
     cursor = conn.cursor()
 
-    ID = cursor.execute(ID_cmd, [VorName,NachName] ).fetchone()
+    ID = cursor.execute(ID_cmd, [Vorname,Nachname] ).fetchone()
     #Existiert Mitarbeiter?
     if not ID:
         flash("Nutzer nicht gefunden")
@@ -102,16 +102,16 @@ def krankMB_post():
 @main.route('/krankPT', methods=["POST"])
 @login_required
 def krankPT_post():
-    VorName = request.form.get('VorName').strip()
-    NachName = request.form.get('NachName').strip()
+    Vorname = request.form.get('Vorname').strip()
+    Nachname = request.form.get('Nachname').strip()
     VonDatum = request.form.get('VonDatum').strip()
     EndeDatum = request.form.get('EndeDatum').strip()
     
-    ID_cmd = "SELECT Kunden_ID FROM Kunde WHERE VorName=? AND NachName=?;"
+    ID_cmd = "SELECT Kunden_ID FROM Kunde WHERE Vorname=? AND Nachname=?;"
 
     conn = get_db()
     cursor = conn.cursor()
-    ID = cursor.execute(ID_cmd, [VorName, NachName]).fetchone()
+    ID = cursor.execute(ID_cmd, [Vorname, Nachname]).fetchone()
     #Existiert Patient?
     if not ID:
         flash("Patient nicht gefunden")
@@ -126,28 +126,19 @@ def krankPT_post():
     return redirect(url_for('main.verwaltung'))
 
 
-
-
-#Liste der Mitarbeiter und Patienten - TODO Anzeigen der Adressen
-@main.route('/liste')
-@main.route('/liste/<mbPT>', methods=['GET','POST'])
+#Liste der Patienten - TODO Anzeigen der Adressen
+@main.route('/patienten-liste')
 @login_required
-def liste(mbPT=None):
-    sql_MB = """ SELECT MB_ID, VorName, NachName FROM Mitarbeiter;"""
-    sql_PT = """ SELECT Kunden_ID, VorName, NachName FROM Kunde;"""
-    cursor = get_db().cursor()
-    if mbPT == 'MB':
-        result = list(cursor.execute(sql_MB).fetchall())
-        MP = "Mitarbeiter"
-    else:
-        result = list(cursor.execute(sql_PT).fetchall())
-        MP = "Patienten"
-    print(MP)
-    return render_template('liste.html', Mitarbeiter=current_user, result=result, MP=MP)
+def patienten_liste():
+    result = list(get_db().execute("SELECT * FROM Kunde INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID").fetchall())
+    return render_template('liste.html', Mitarbeiter=current_user, result=result, personen_type="Patienten")
 
-
-
-
+#Liste der Mitarbeiter - TODO Anzeigen der Adressen
+@main.route('/mitarbeiter-liste')
+@login_required
+def mitarbeiter_liste():
+    result = list(get_db().execute("SELECT * FROM Mitarbeiter INNER JOIN Adresse ON Mitarbeiter.Adresse = Adresse.Adresse_ID").fetchall())
+    return render_template('liste.html', Mitarbeiter=current_user, result=result, personen_type="Mitarbeiter")
 
 @main.route('/anmeldenMB')
 @login_required
@@ -158,8 +149,8 @@ def anmeldenMB():
 @main.route('/anmeldenMB', methods=["POST"])
 @login_required
 def anmeldenMB_post():
-    VorName = request.form.get('VorName').strip()
-    NachName = request.form.get('NachName').strip()
+    Vorname = request.form.get('Vorname').strip()
+    Nachname = request.form.get('Nachname').strip()
     Position = request.form.get('Position')
     Strasse = request.form.get('Straße').strip()
     HNum = request.form.get('Hausnummer').strip()
@@ -169,11 +160,11 @@ def anmeldenMB_post():
     
     AdresseID = setAdressegetID(Strasse, HNum, PLZ, Ort)
 
-    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle, Adresse) VALUES (?, ?, ?, ?);"
+    sql_command = "INSERT INTO Mitarbeiter(Vorname, Nachname, Rolle, Adresse) VALUES (?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
 
-    cursor.execute(sql_command, [VorName, NachName, str(Position), AdresseID])
+    cursor.execute(sql_command, [Vorname, Nachname, str(Position), AdresseID])
     con.commit()
 
     return redirect(url_for('main.liste'))
@@ -188,8 +179,8 @@ def anmeldenPT():
 @main.route('/anmeldenPT', methods=["POST"])
 @login_required
 def anmeldenPT_post():
-    VorName = request.form.get('VorName').strip()
-    NachName = request.form.get('NachName').strip()
+    Vorname = request.form.get('Vorname').strip()
+    Nachname = request.form.get('Nachname').strip()
     Rolle = request.form.get('Rolle')
     Nummer = request.form.get('Nummer').strip()
     Besuche = request.form.get('Besuche')
@@ -198,17 +189,17 @@ def anmeldenPT_post():
     PLZ = request.form.get('PLZ').strip()
     Ort = request.form.get('Ort').strip()
     
-    if Rolle == "Stationär":
+    if Rolle == "Stationaer":
         RaumNummer = getRaum() # get free Room as local patient
         AdresseID = setRoomgetID(RaumNummer)
     else:
         AdresseID = setAdressegetID(Strasse, HNum, PLZ, Ort)
 
-    sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag, Adresse) VALUES (?, ?, ?, ?, ?, ?);" 
-    sql_liste = [VorName, NachName, Nummer,Rolle, Besuche, AdresseID]
+    sql_command = "INSERT INTO Kunde(Vorname, Nachname, TelefonNummer, Rolle, Besuche_Pro_Tag, Adresse) VALUES (?, ?, ?, ?, ?, ?);" 
+    sql_liste = [Vorname, Nachname, Nummer,Rolle, Besuche, AdresseID]
 
 
-    #sql_command = "INSERT INTO Kunde(VorName, NachName, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
+    #sql_command = "INSERT INTO Kunde(Vorname, Nachname, TelefonNummer, Rolle, Besuche_Pro_Tag) VALUES(?, ?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
     res = cursor.execute(sql_command, sql_liste)
@@ -255,22 +246,22 @@ def confirm_post(ID, mbPT):
 
     return redirect(url_for('main.liste'))
 
-def existsUser(VorName, NachName, mbPT):
+def existsUser(Vorname, Nachname, mbPT):
     con = get_db()
     cursor = con.cursor()
 
-    print(VorName)
-    print(NachName)
+    print(Vorname)
+    print(Nachname)
     print(mbPT)
     if mbPT == "Mitarbeiter":
         ID = "MB_ID"
         Tabelle = "Mitarbeiter"
-        sql_command = "SELECT MB_ID FROM Mitarbeiter WHERE VorName=? AND NachName=?;"
+        sql_command = "SELECT MB_ID FROM Mitarbeiter WHERE Vorname=? AND Nachname=?;"
     else:
         ID = "Kunden_ID"
         Tabelle = "Kunde"
-        sql_command = "SELECT Kunden_ID FROM Kunde WHERE VorName=? AND NachName=?;"
-    result = cursor.execute(sql_command, [VorName, NachName ]).fetchone()
+        sql_command = "SELECT Kunden_ID FROM Kunde WHERE Vorname=? AND Nachname=?;"
+    result = cursor.execute(sql_command, [Vorname, Nachname ]).fetchone()
     if not result:
         return False
 

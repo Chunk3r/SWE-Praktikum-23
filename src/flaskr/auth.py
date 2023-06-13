@@ -16,28 +16,28 @@ def login():
 @auth.route('/login', methods=['POST'])
 def login_post():
     
-    NachName = request.form.get('NachName')
+    Nachname = request.form.get('Nachname')
 
     cursor = db.get_db().cursor() 
-    cursor.execute(f"Select MB_ID, VorName, NachName, Rolle  FROM Mitarbeiter WHERE NachName='{NachName}';")
+    cursor.execute(f"Select MB_ID, Vorname, Nachname, Rolle  FROM Mitarbeiter WHERE Nachname='{Nachname}';")
     result = cursor.fetchone()
     
     if not result:
         flash('Account existiert nicht')
         return redirect(url_for('auth.login'))
 
-    user_ID, user_VorName, user_NachName, user_Rolle = list(result)
-    user = Mitarbeiter(user_ID, user_VorName, user_NachName, user_Rolle)
-    #db_user = load_user(user.NachName) 
+    user_ID, user_Vorname, user_Nachname, user_Rolle = list(result)
+    user = Mitarbeiter(user_ID, user_Vorname, user_Nachname, user_Rolle)
+    #db_user = load_user(user.Nachname) 
     
-    if user.NachName != NachName :
+    if user.Nachname != Nachname :
         return redirect(url_for('auth.login'))
     elif user.Rolle == "Pflege" or user.Rolle == "Employee":
         login_user(user)
         return redirect(url_for('main.dienstplan'))
     else:
         login_user(user)
-        return redirect(url_for('main.verwaltung') )# NachName = current_user.NachName)
+        return redirect(url_for('main.verwaltung') )# Nachname = current_user.Nachname)
 
 
 @auth.route('/logout')

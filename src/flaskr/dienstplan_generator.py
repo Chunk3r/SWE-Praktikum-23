@@ -24,7 +24,7 @@ def generate_dienstplaene():
 
     ##Tagesplan erstellen##
     for mitarbeiter in alle_mitarbeiter:
-        print("Generating Dienstplan for " + mitarbeiter["VorName"] + " " + mitarbeiter["NachName"])
+        print("Generating Dienstplan for " + mitarbeiter["Vorname"] + " " + mitarbeiter["Nachname"])
 
         mitarbeiter_id = mitarbeiter["MB_ID"]
 
