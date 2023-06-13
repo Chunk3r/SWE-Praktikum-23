@@ -3,12 +3,9 @@ from flask import Blueprint,flash, render_template, redirect, url_for, request
 from flaskr import dienstplan_generator
 from flaskr.db import get_db
 from flask_login import login_required, current_user
-#app = Flask(__name__)
+
 main = Blueprint('main', __name__)
 
-#@main.route('/')
-#def index():
-#    return render_template("index.html")
 
 @main.route('/dienstplan')
 @login_required
@@ -38,7 +35,7 @@ def dienstplan():
 
 
 
-
+#Ansicht der Krankschreibungen
 @main.route('/verwaltung', methods=["GET","POST"])
 @main.route('/verwaltung/<mbPT>', methods=["GET","POST"])
 @login_required
@@ -74,7 +71,7 @@ def krankMB():
 def krankPT():
     return render_template("krankPT.html")
 
-
+#Eintragung der Mitarbeiter Krankschreibung
 @main.route('/krankMB', methods=["POST"])
 @login_required
 def krankMB_post():
@@ -101,7 +98,7 @@ def krankMB_post():
 
     return redirect(url_for('main.verwaltung'))
 
-
+#Eintragung der Patienten Krankschreibungen
 @main.route('/krankPT', methods=["POST"])
 @login_required
 def krankPT_post():
@@ -131,7 +128,7 @@ def krankPT_post():
 
 
 
-
+#Liste der Mitarbeiter und Patienten - TODO Anzeigen der Adressen
 @main.route('/liste')
 @main.route('/liste/<mbPT>', methods=['GET','POST'])
 @login_required
@@ -157,7 +154,7 @@ def liste(mbPT=None):
 def anmeldenMB():
     return render_template("anmeldenMB.html")
 
-
+#meldet Mitarbeiter in Datenbank an
 @main.route('/anmeldenMB', methods=["POST"])
 @login_required
 def anmeldenMB_post():
@@ -187,7 +184,7 @@ def anmeldenMB_post():
 def anmeldenPT():
     return render_template("anmeldenPT.html")
 
-
+#meldet Patienten in Datenbank an
 @main.route('/anmeldenPT', methods=["POST"])
 @login_required
 def anmeldenPT_post():
@@ -232,7 +229,7 @@ def confirm(ID, mbPT):
     print(mbPT)
     return render_template('confirmation.html', ID=ID, mbPT=mbPT)
 
-
+#Ausbaufähig aber macht seinen Job, damit man nicht blind Einträge löscht
 @main.route('/confirm/<ID>-<mbPT>', methods=["POST"])
 @login_required
 def confirm_post(ID, mbPT):
@@ -279,6 +276,7 @@ def existsUser(VorName, NachName, mbPT):
 
     return True
     
+#bekomme Freien Raum der noch nicht benutzt wird
 def getRaum():
     raumListe = [ x for x in range(1,150)  ]
     cursor = get_db().cursor()
@@ -294,7 +292,7 @@ def getRaum():
     else:
         return None
 
-
+#returned Adresse - falls Adresse nicht existiert -> neuer Eintrag
 def setAdressegetID(Strasse, HNum, PLZ, Stadt):
     con = get_db()
     cursor = con.cursor()
@@ -311,7 +309,7 @@ def setAdressegetID(Strasse, HNum, PLZ, Stadt):
         return res[0]
 
 
-
+#returned Adresse der Klinik mit gesetzter Raumnummer
 def setRoomgetID(Room):
     AdresseKlinik = [ "Reinarzstraße", "49", 47805, "Krefeld" ]
     AdresseKlinik.append(Room)
