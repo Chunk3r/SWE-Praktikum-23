@@ -185,6 +185,7 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 ### Nachverfolgung der funktionalen Anforderungen
 
 1. Alle Betreuer müssen ihre Tagespläne einsehen können
+4. Kankenbesuche müssen während des Tages berücksichtigt werden
 6. Bei ambulanten Patienten muss die Reisezeit berücksichtigt werden
 10. Die Kunden sollen mehrmals am Tag besucht werden können
       
@@ -198,8 +199,9 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
       ![Tagesplan](./Abbildungen_Implementierung/Abb_Tagesplan.png 'Tagesplan')
       Abbildung Tagesplan
 
+      Über den Button "Dienstplan aktualisieren werden Änderungen berücksichtigt"
+      An den Uhrzeiten sieht man, dass die Reisezeit berücksichtigt wird.
       Auf dem Tagesplan sieht man, dass Kunden auch mehrmals am Tag besucht werden.
-
 
 2. Die Tagespläne müssen automatisch erstellt werden
 
@@ -227,3 +229,10 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 
       ![Mitarbeiter_hinzufügen](./Abbildungen_Implementierung/Abb_MBHinzuf%C3%BCgen.png 'Mitarbeiter_hinzufügen')
       Abbildung Mitarbeiter hinzufügen
+
+7. Für stationäre Klienten muss keine Reisezeit berücksichtigt werden
+
+      An den Uhrzeiten sieht man, dass bei stationären Patienten keine Reisezeit berücksichtigt wird.
+      
+      ![Tagesplan_Stationär](./Abbildungen_Implementierung/Abb_TagesplanStation%C3%A4r.png 'Tagesplan_Stationär')
+      Abbildung stationärer Tagesplan
