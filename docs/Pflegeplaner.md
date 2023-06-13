@@ -253,3 +253,13 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 4. Die Benutzerschnittstelle sollte einfach zu bedienen sein
 
       Wie in den Abbildungen oben zu sehen ist, sind die Oberflächen übersichtlich und alle Funktionen sind leicht zu finden.
+
+### Unterschiede zum Design
+
+Es gab Anpassungen der Oberflächen um die Übersichtlichkeit zu verbessern.
+
+Zum einen wurde das Suchfeld weggelassen.
+Zum anderen wurden die Spalten der Tabellen angepasst.
+"Krankmeldung" ist nicht mehr im Dropdownmenü "Edit", sondern in der Navbar.
+Der Login hat zusätzlich noch ein Feld für ein Passwort bekommen.
+Es gibt beim Tagesplan einen Button zum aktualisieren.
