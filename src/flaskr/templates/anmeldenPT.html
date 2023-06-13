@@ -52,6 +52,11 @@
 				      	<input type="text" name="Nummer" required>
                                         <label>Nummer</label>
 				      </div>
+					  <div class="txt_field">
+						<input type="number" name="Besuche" required>
+								<label>Besuche pro Tag</label>
+		 		    </div>
+
                                       <div class="txt_field">
   					<input type="radio"  name="Rolle" value="Mobil">
   					<label for="css">Mobil</label><br>
@@ -60,10 +65,7 @@
   					<input type="radio"  name="Rolle" value="Stationär">
   					<label for="javascript">Stationär</label>
                       </div>
-					<div class="txt_field">
-						<input type="number" name="Besuche" required>
-								<label>Besuche pro Tag</label>
-		 		    </div>
+
 
 				                    <div class="anmeldenMB-zuruck">
                         				      <a href="{{ url_for('main.liste') }}">Zurück</a>
