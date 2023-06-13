@@ -17,15 +17,18 @@
         <nav>
             <img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo1">
             <ul>
-        {% if Mitarbeiter != undefinded %}
+        {% if Mitarbeiter != None %}
 		<li>
             <span> Willkommen {{ Mitarbeiter.Nachname }} </span> 
         </li>
         {% endif %}
 
-        <li><a href="{{ url_for('main.dienstplan') }}">DIENSTPLAN</a></li>
+        {% if Mitarbeiter != None and Mitarbeiter.Rolle == "Verwaltung" %}
 		<li><a href="{{ url_for('main.mitarbeiter_liste') }}">PERSONEN VERWALTUNG</a></li>
 		<li><a href="{{ url_for('main.verwaltung') }}">KRANKMELDUNGEN</a></li>
+        {% else %}
+        <li><a href="{{ url_for('main.dienstplan') }}">DIENSTPLAN</a></li>
+        {% endif %}
 		<li><a href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
             </ul>
         </nav>

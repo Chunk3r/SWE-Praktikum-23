@@ -24,9 +24,10 @@ def generate_dienstplaene():
 
     ##Tagesplan erstellen##
     for mitarbeiter in alle_mitarbeiter:
-        print("Generating Dienstplan for " + mitarbeiter["Vorname"] + " " + mitarbeiter["Nachname"])
+        #print("Generating Dienstplan for " + mitarbeiter["Vorname"] + " " + mitarbeiter["Nachname"])
 
         mitarbeiter_id = mitarbeiter["MB_ID"]
+        mitarbeiter_rolle = mitarbeiter["Rolle"]
 
         #besuche aus der db importieren
         besuche = db.execute("SELECT * FROM Besuche WHERE Datum = ? AND Mitarbeiter_ID = ?", [today_str, mitarbeiter_id]).fetchall()
@@ -36,31 +37,41 @@ def generate_dienstplaene():
         if istKrankgeschrieben(krankmeldungen_mitarbeiter, today):
             continue
 
-        # arbeitszeit von 8 bis 16 uhr
-        for hour in range(8, 16):
-            # 30min fahrzeit
-            besuch_startzeit = getTimeFromString(str(hour) + ":30")
+        # arbeitszeit startet um 8 uhr
+        hour = 8
+        minute = 0
+        # arbeitszeit geht bis 16 uhr
+        while hour < 16:
+
+            if mitarbeiter_rolle == "Mobil":
+                # 30min fahrzeit
+                hour, minute = addMinutes(hour, minute, 30)
+
+            besuch_startzeit = time(hour, minute)
             besuch_startzeit_str = getStringFromTime(besuch_startzeit)
+
+            # besuch dauert 30 min
+            hour, minute = addMinutes(hour, minute, 30)
 
             # check ob ein besuch eintrag schon existiert
             besuch = findBesuchForTime(besuche, besuch_startzeit)
 
             # wenn besuch schon existiert, mit nächster stunde weiter machen
             if besuch != None:
-                print(besuch_startzeit_str, ": Besuch alredy exists")
+                #print(besuch_startzeit_str, ": Besuch alredy exists")
                 continue
 
             # kunden für besuch finden
-            passender_kunde = findKunde(kunden, besuche, today, besuch_startzeit)
+            passender_kunde = findKunde(kunden, besuche, today, besuch_startzeit, mitarbeiter["Rolle"])
 
             if passender_kunde == None:
                 # kein passender kunde gefunden, freizeit.
-                print(besuch_startzeit_str, ": No maching Kunde found")
+                #print(besuch_startzeit_str, ": No maching Kunde found")
                 continue
 
             # neuen besuch eintrag erstellen
             besuch = (passender_kunde["Kunden_ID"], mitarbeiter_id, today_str, besuch_startzeit_str)
-            print(besuch_startzeit_str, ": Adding Besuch", besuch)
+            #print(besuch_startzeit_str, ": Adding Besuch", besuch)
 
             # besuch in db inserten
             db.execute("INSERT INTO Besuche (Kunden_ID, Mitarbeiter_ID, Datum, Uhrzeit) VALUES(?, ?, ?, ?)", besuch)
@@ -82,30 +93,31 @@ def findBesuchForTime(besuche, uhrzeitToFind):
     return None
 
 # findet einen passenden kunden, für einen besuch
-def findKunde(kunden, besuche, today, uhrzeit):
+def findKunde(kunden, besuche, today, uhrzeit, rolle):
     db = get_db()
     for kunde in kunden:
         kunden_id = kunde["Kunden_ID"]
+        kunde_rolle = kunde["Rolle"]
         krankmeldungen_kunde = db.cursor().execute("SELECT * FROM Krankschreibung_Kunde WHERE Kunden_ID = ?", [kunden_id]).fetchall()
 
         # checken wieviele besuche der kunde heute schon hat
         if not checkBesucheProTag(today, kunden_id, kunde["Besuche_Pro_Tag"]):
-            print("Kunde ", kunden_id, " no match, appointments per day already satisfied")
+            #print("Kunde ", kunden_id, " no match, appointments per day already satisfied")
             continue
 
         # checken ob der letzte besuch mindestens 2 stunden her ist (damit man nicht den selben kunden 2 mal hintereinander besucht)
         if not checkBesuch2HoursDistance(besuche, kunden_id, uhrzeit):
-            print("Kunde ", kunden_id, " no match, last appointment was withing 2 hours")
+            #print("Kunde ", kunden_id, " no match, last appointment was withing 2 hours")
             continue
 
         # checken ob kunde auch nicht krankgeschrieben ist
         if istKrankgeschrieben(krankmeldungen_kunde, today):
-            print("Kunde ", kunden_id, " no match, is ill")
+            #print("Kunde ", kunden_id, " no match, is ill")
             continue
 
         # checken ob kunde die richtige pflegekategorie(ambulant/stationär) hat
-        if not checkKundeHasCorrectPflegekategorie():
-            print("Kunde ", kunden_id, " no match, has invalid Pflegekategorie")
+        if not checkKundeHasCorrectRole(kunde["Rolle"], rolle):
+            #print("Kunde ", kunden_id, " no match, has invalid role ", kunde_rolle, ", employee is " + rolle)
             continue
 
         # passender kunde gefunden
@@ -136,9 +148,12 @@ def checkBesuch2HoursDistance(besuche, kunden_id: str, uhrzeit: time):
             return False
     return True
 
-def checkKundeHasCorrectPflegekategorie():
-    # TODO
-    return True
+def checkKundeHasCorrectRole(kunde_rolle, mitarbeiter_rolle):
+    if mitarbeiter_rolle == "Stationaer":
+        return kunde_rolle == "Stationaer"
+    elif mitarbeiter_rolle == "Mobil":
+        return kunde_rolle == "Ambulant"
+    return False
 
 def istKrankgeschrieben(krankschreibungen, today: date):
     for krankschreibung in krankschreibungen:
@@ -168,7 +183,7 @@ def deleteCanceledBesuche():
         if today < start_date or today > end_date:
             continue
 
-        print("Found Mitarbeiter Krankmeldung ", krankschreibung["Start_Datum"], " ", krankschreibung["ENDE_Datum"])
+        #print("Found Mitarbeiter Krankmeldung ", krankschreibung["Start_Datum"], " ", krankschreibung["ENDE_Datum"])
 
         deleteBesuche(mitarbeiter_id, None, start_date, end_date)
 
@@ -202,7 +217,7 @@ def deleteBesuche(mitarbeiter_id, kunden_id, start_date: date, end_date: date):
 
         current_date_str = getStringFromDate(current_date)
 
-        print("delete besuche ", current_date_str)
+        #print("delete besuche ", current_date_str)
 
         if mitarbeiter_id != None:
             db.execute("DELETE FROM Besuche WHERE Mitarbeiter_ID = ? AND Datum = ?", [mitarbeiter_id, current_date_str])
@@ -213,5 +228,10 @@ def deleteBesuche(mitarbeiter_id, kunden_id, start_date: date, end_date: date):
 
         current_date += timedelta(days=1)
 
-
+def addMinutes(hour, minute, amount):
+    # gibt keine andere möglichkeit weil python scheiße ist
+    minute = minute + amount
+    hour = hour + int(minute / 60)
+    minute = minute % 60
+    return hour, minute
         

@@ -11,6 +11,7 @@ main = Blueprint('main', __name__)
 def dienstplan():
     db = get_db()
     date_str = request.args.get("date", type=str)
+    generate = request.args.get("generate", type=bool)
 
     # wenn kein datum angegeben wurde, heutiges datum verwenden
     if date_str == None:
@@ -18,7 +19,8 @@ def dienstplan():
     else:
         date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
 
-    dienstplan_generator.generate_dienstplaene()
+    if generate:
+        dienstplan_generator.generate_dienstplaene()
     
     # besuche aus datenbank laden
     appointments = db.execute("""SELECT *
@@ -193,7 +195,7 @@ def anmeldenMB_post():
     cursor.execute(sql_command, [Vorname, Nachname, str(Position), AdresseID])
     con.commit()
 
-    return redirect(url_for('main.liste'))
+    return redirect(url_for('main.mitarbeiter_liste'))
 
 
 @main.route('/anmeldenPT')
@@ -238,7 +240,7 @@ def anmeldenPT_post():
     print(res)
     con.commit()
 
-    return redirect(url_for('main.liste'))
+    return redirect(url_for('main.patienten_liste'))
 
 
 @main.route('/confirm')
@@ -323,10 +325,10 @@ def setAdressegetID(Strasse, HNum, PLZ, Stadt):
     con = get_db()
     cursor = con.cursor()
     adresse = [ Strasse, HNum, PLZ, Stadt ]
-    sql_select = "SELECT Adresse_ID FROM Adresse WHERE Straße=? AND Hausnummer=? AND PLZ=? AND Ort=?;"
+    sql_select = "SELECT Adresse_ID FROM Adresse WHERE Strasse=? AND Hausnummer=? AND PLZ=? AND Ort=?;"
     res = cursor.execute(sql_select, adresse).fetchone() 
     if not res:
-        cursor.execute("INSERT INTO Adresse(Straße, Hausnummer, PLZ, Ort) VALUES (?,?,?,?);",adresse)
+        cursor.execute("INSERT INTO Adresse(Strasse, Hausnummer, PLZ, Ort) VALUES (?,?,?,?);",adresse)
         con.commit()
         res = list(cursor.execute(sql_select, adresse).fetchone())
         return res[0]

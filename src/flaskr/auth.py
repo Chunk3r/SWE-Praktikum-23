@@ -32,12 +32,12 @@ def login_post():
     
     if user.Nachname != Nachname :
         return redirect(url_for('auth.login'))
-    elif user.Rolle == "Pflege" or user.Rolle == "Employee":
+    elif user.Rolle == "Verwaltung":
         login_user(user)
-        return redirect(url_for('main.dienstplan'))
+        return redirect(url_for('main.verwaltung'))
     else:
         login_user(user)
-        return redirect(url_for('main.verwaltung') )# Nachname = current_user.Nachname)
+        return redirect(url_for('main.dienstplan'))
 
 
 @auth.route('/logout')
