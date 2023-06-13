@@ -120,11 +120,11 @@ INSERT INTO Adresse (Strasse, Hausnummer, PLZ, Ort, Wohnraum) VALUES
 
 -- Dummy data for Mitarbeiter table
 INSERT INTO Mitarbeiter (Vorname, Nachname, Adresse, Rolle) VALUES
-('John', 'Doe', 1, 'Manager'),
-('Jane', 'Smith', 2, 'Employee'),
-('Michael', 'Johnson', 3, 'Employee'),
-('Emily', 'Williams', 4, 'Employee'),
-('David', 'Brown', 5, 'Employee');
+('John', 'Doe', 1, 'Verwaltung'),
+('Jane', 'Smith', 2, 'Stationaer'),
+('Michael', 'Johnson', 3, 'Mobil'),
+('Emily', 'Williams', 4, 'Mobil'),
+('David', 'Brown', 5, 'Mobil');
 
 -- Dummy data for Dienstbefreiung_Mitarbeiter table
 INSERT INTO Dienstbefreiung_Mitarbeiter (Mitarbeiter_ID, Start_Datum, ENDE_Datum) VALUES
