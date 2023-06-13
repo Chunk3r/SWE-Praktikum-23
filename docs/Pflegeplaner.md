@@ -185,8 +185,9 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 ### Nachverfolgung der funktionalen Anforderungen
 
 1. Alle Betreuer müssen ihre Tagespläne einsehen können
+10. Die Kunden sollen mehrmals am Tag besucht werden können
       
-      Wenn die Betreuer eine Verbindung zum VPN haben, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
+      Wenn die Betreuer eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
 
       ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
       Abbildung Login
@@ -196,13 +197,31 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
       ![Tagesplan](./Abbildungen_Implementierung/Abb_Tagesplan.png 'Tagesplan')
       Abbildung Tagesplan
 
+      Auf dem Tagesplan sieht man, dass Kundne auch mehrmals am Tag besucht werden.
+
 2. Die Tagespläne müssen automatisch erstellt werden
 
       Das Modul "dienstplan_generator" erstellt die Tagespläne unter Berücksichtigung der Arbeitszeit, Abmeldungen von Kunden und Pflegepersonal, Bedarf an Besuchen pro Tag.
 
 3. Es muss möglich sein, neue Kunden hinzuzufügen
+5. Es muss möglich sein, neue Mitarbeiter hinzuzufügen
 
       Wenn die Verwaltungsangestellten eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen
 
       ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
       Abbildung Login
+
+      Über die Verwaltungsseite
+
+      ![Verwaltungsansicht](./Abbildungen_Implementierung/Abb_Verwaltung.png 'Verwaltungsansicht')
+      Abbildung Verwaltung
+
+      kommen die Verwaltungs angestellten zur Neuanmeldung von Patienten
+
+      ![Patienten_hinzufügen](./Abbildungen_Implementierung/Abb_PatHinzuf%C3%BCgen.png 'Patienten_hinzufügen')
+      Abbildung Patienten hinzufügen
+
+      und Mitarbeitern
+
+      ![Mitarbeiter_hinzufügen](./Abbildungen_Implementierung/Abb_MBHinzuf%C3%BCgen.png 'Mitarbeiter_hinzufügen')
+      Abbildung Mitarbeiter hinzufügen
