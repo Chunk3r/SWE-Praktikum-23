@@ -285,4 +285,28 @@ Es gibt beim Tagesplan einen Button zum aktualisieren.
 
 ### Manuelle Testfälle
 
-      
+1. Login mit falschem Namen - muss felschlagen
+
+2. Login mit Verwaltungsmitarbeiter - muss funktionieren
+
+3. Login mit mobilem Pfleger - muss funktionieren
+
+4. Login mit stationärem Pfleger - muss funktionieren
+
+5. Zugriff auf Tagesplan mit Verwaltungsmitarbeiter - muss fehlschlagen
+
+6. Zugriff auf Tagesplan mit mobilem Pfleger - muss funktionieren
+
+7. Zugriff auf Tagesplan mit stationärem Pfleger - muss funktionieren
+
+8. Zugriff auf Personenverwaltung mit Verwaltungsmitarbeiter - muss funktionieren
+
+9. Zugriff auf Krankmeldungen mit Verwaltungsmitarbeiter - muss funktionieren
+
+10. Neue Kunden anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+11. Neue Mitarbeiter anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+12. Neue Kundenkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+13. Neue Mitarbeiterkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
