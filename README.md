@@ -27,7 +27,11 @@ python -m flask --app src/flaskr init-db
 
 ### Run applicaion
 ```sh
+# lokal ereichbar
 python -m flask --app src/flaskr run
+
+# im vpn ereichbar
+python -m flask --app src/flaskr run --host=0.0.0.0
 ```
 
 ## Team
