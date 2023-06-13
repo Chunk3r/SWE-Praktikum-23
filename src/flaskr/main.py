@@ -164,13 +164,19 @@ def anmeldenMB_post():
     VorName = request.form.get('VorName').strip()
     NachName = request.form.get('NachName').strip()
     Position = request.form.get('Position')
-    #ADRESSE FEHLT
+    Strasse = request.form.get('Straße').strip()
+    HNum = request.form.get('Hausnummer').strip()
+    PLZ = request.form.get('PLZ').strip()
+    Ort = request.form.get('Ort').strip()
+
     
-    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle) VALUES (?, ?, ?);"
+    AdresseID = setAdressegetID(Strasse, HNum, PLZ, Ort)
+
+    sql_command = "INSERT INTO Mitarbeiter(VorName, NachName, Rolle, Adresse) VALUES (?, ?, ?, ?);"
     con = get_db()
     cursor = con.cursor()
 
-    cursor.execute(sql_command, [VorName, NachName, str(Position)])
+    cursor.execute(sql_command, [VorName, NachName, str(Position), AdresseID])
     con.commit()
 
     return redirect(url_for('main.liste'))
