@@ -185,6 +185,7 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 ### Nachverfolgung der funktionalen Anforderungen
 
 1. Alle Betreuer müssen ihre Tagespläne einsehen können
+6. Bei ambulanten Patienten muss die Reisezeit berücksichtigt werden
 10. Die Kunden sollen mehrmals am Tag besucht werden können
       
       Wenn die Betreuer eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
@@ -197,7 +198,8 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
       ![Tagesplan](./Abbildungen_Implementierung/Abb_Tagesplan.png 'Tagesplan')
       Abbildung Tagesplan
 
-      Auf dem Tagesplan sieht man, dass Kundne auch mehrmals am Tag besucht werden.
+      Auf dem Tagesplan sieht man, dass Kunden auch mehrmals am Tag besucht werden.
+
 
 2. Die Tagespläne müssen automatisch erstellt werden
 
