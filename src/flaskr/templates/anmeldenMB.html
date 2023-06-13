@@ -28,15 +28,33 @@
         <h1>Neuen Mitarbeiter hinzufügen</h1>
         <form method="POST" action="/anmeldenMB">
           <div class="txt_field">
-            <input type="text" name="Vorname" required />
+            <input
+              type="text"
+              name="Vorname"
+              pattern="^[a-zA-Z]+$"
+              title="Nur Buchstaben sind erlaubt."
+              required
+            />
             <label>Vorname</label>
           </div>
           <div class="txt_field">
-            <input type="text" name="Nachname" required />
+            <input
+              type="text"
+              name="Nachname"
+              pattern="^[a-zA-Z]+$"
+              title="Nur Buchstaben sind erlaubt."
+              required
+            />
             <label>Nachname</label>
           </div>
           <div class="txt_field">
-            <input type="text" name="Straße" required />
+            <input
+              type="text"
+              name="Straße"
+              pattern="^[a-zA-Z]+$"
+              title="Nur Buchstaben sind erlaubt."
+              required
+            />
             <label>Straße</label>
           </div>
           <div class="txt_field">
@@ -44,11 +62,23 @@
             <label>Hausnummer</label>
           </div>
           <div class="txt_field">
-            <input type="text" name="PLZ" pattern="[0-9]+" required />
+            <input
+              type="text"
+              name="PLZ"
+              pattern="\d{5}"
+              title="Bitte geben Sie Ihre Postleitzahl im Format 12345 ein. Die PLZ ist 5-stellig."
+              required
+            />
             <label>PLZ</label>
           </div>
           <div class="txt_field">
-            <input type="text" name="Ort" required />
+            <input
+              type="text"
+              name="Ort"
+              pattern="^[a-zA-Z]+$"
+              title="Nur Buchstaben sind erlaubt."
+              required
+            />
             <label>Ort</label>
           </div>
 
