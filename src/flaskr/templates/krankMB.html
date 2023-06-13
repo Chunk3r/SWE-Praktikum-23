@@ -28,19 +28,19 @@
 					<h1>Krankmeldung Mitarbeiter</h1>
 					<form method="POST" action="/krankMB">
 						<div class="txt_field">
-							<input type="text" name="VorName" required>
+							<input type="text" name="VorName" pattern="^[a-zA-Z]+$" title="Nur Buchstaben sind erlaubt." required>
 							<label>Vorname</label>
 						</div>
 						<div class="txt_field">
-							<input type="text" name="NachName" required>
+							<input type="text" name="NachName" pattern="^[a-zA-Z]+$" title="Nur Buchstaben sind erlaubt." required>
 							<label>Nachname</label>
 						</div>
 						<div class="txt_field">
-							<input type="text" name="VonDatum" required>
+							<input type="text" name="VonDatum" pattern="\d{4}-\d{2}-\d{2}" title="Bitte geben Sie ein Datum im Format JJJJ-MM-TT ein." required>
 							<label>Von (YYYY-MM-DD)</label>
 						  </div>
 						  <div class="txt_field">
-							<input type="text" name="EndeDatum" required>
+							<input type="text" name="EndeDatum" pattern="\d{4}-\d{2}-\d{2}" title="Bitte geben Sie ein Datum im Format JJJJ-MM-TT ein." required>
 							<label>Bis (YYYY-MM-DD)</label>
 						  </div>
 						<a href=" {{ url_for('main.verwaltung') }}  ">Zurück</a>
