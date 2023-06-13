@@ -768,3 +768,70 @@ input[type="submit"]:hover{
   display: flex;
   flex-direction: column;
 }
+
+
+
+/*THIS IS TO FIX THE LOGIN PANEL - NO MORE SPLIT FORMULAR*/
+
+form .txt_fieldLOGIN{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.txt_fieldLOGIN input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.txt_fieldLOGIN label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+  }
+  .txt_fieldLOGIN span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+  }
+  .txt_fieldLOGIN input:focus ~ label,
+  .txt_fieldLOGIN input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+  }
+
+
+  .centerLOGIN{
+    margin-top: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      background: rgba(255, 255, 255, 0.788);
+      border-radius: 10px;
+      box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    }
+
+    .centerLOGIN h1{
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid silver;
+    }
+    .centerLOGIN form{
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
