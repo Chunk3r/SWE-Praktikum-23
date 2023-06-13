@@ -1,11 +1,10 @@
 import datetime
-from flask import Blueprint,flash, render_template, redirect, url_for, request
+from flask import Blueprint, abort,flash, make_response, render_template, redirect, url_for, request
 from flaskr import dienstplan_generator
 from flaskr.db import get_db
 from flask_login import login_required, current_user
 
 main = Blueprint('main', __name__)
-
 
 @main.route('/dienstplan')
 @login_required
@@ -40,6 +39,9 @@ def dienstplan():
 @main.route('/verwaltung/<mbPT>', methods=["GET","POST"])
 @login_required
 def verwaltung(mbPT=None):
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     cursor = get_db().cursor()
     mb_krankmeldung = """SELECT Mitarbeiter.Vorname, Mitarbeiter.Nachname, Dienstbefreiung_Mitarbeiter.Start_Datum, Dienstbefreiung_Mitarbeiter.Ende_Datum 
             FROM Dienstbefreiung_Mitarbeiter JOIN Mitarbeiter ON Mitarbeiter.MB_ID = Dienstbefreiung_Mitarbeiter.Mitarbeiter_ID;"""
@@ -63,18 +65,27 @@ def verwaltung(mbPT=None):
 @main.route('/krankMB')
 @login_required
 def krankMB():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     return render_template("krankMB.html", Mitarbeiter=current_user)
 
 
 @main.route('/krankPT')
 @login_required
 def krankPT():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     return render_template("krankPT.html")
 
 #Eintragung der Mitarbeiter Krankschreibung
 @main.route('/krankMB', methods=["POST"])
 @login_required
 def krankMB_post():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     Vorname = request.form.get('Vorname').strip()
     Nachname = request.form.get('Nachname').strip()
     VonDatum = request.form.get('VonDatum').strip()
@@ -102,6 +113,9 @@ def krankMB_post():
 @main.route('/krankPT', methods=["POST"])
 @login_required
 def krankPT_post():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     Vorname = request.form.get('Vorname').strip()
     Nachname = request.form.get('Nachname').strip()
     VonDatum = request.form.get('VonDatum').strip()
@@ -130,6 +144,9 @@ def krankPT_post():
 @main.route('/patienten-liste')
 @login_required
 def patienten_liste():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     result = list(get_db().execute("SELECT * FROM Kunde INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID").fetchall())
     return render_template('liste.html', Mitarbeiter=current_user, result=result, personen_type="Patienten")
 
@@ -137,18 +154,27 @@ def patienten_liste():
 @main.route('/mitarbeiter-liste')
 @login_required
 def mitarbeiter_liste():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     result = list(get_db().execute("SELECT * FROM Mitarbeiter INNER JOIN Adresse ON Mitarbeiter.Adresse = Adresse.Adresse_ID").fetchall())
     return render_template('liste.html', Mitarbeiter=current_user, result=result, personen_type="Mitarbeiter")
 
 @main.route('/anmeldenMB')
 @login_required
 def anmeldenMB():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     return render_template("anmeldenMB.html")
 
 #meldet Mitarbeiter in Datenbank an
 @main.route('/anmeldenMB', methods=["POST"])
 @login_required
 def anmeldenMB_post():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     Vorname = request.form.get('Vorname').strip()
     Nachname = request.form.get('Nachname').strip()
     Position = request.form.get('Position')
@@ -173,12 +199,18 @@ def anmeldenMB_post():
 @main.route('/anmeldenPT')
 @login_required
 def anmeldenPT():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     return render_template("anmeldenPT.html")
 
 #meldet Patienten in Datenbank an
 @main.route('/anmeldenPT', methods=["POST"])
 @login_required
 def anmeldenPT_post():
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     Vorname = request.form.get('Vorname').strip()
     Nachname = request.form.get('Nachname').strip()
     Rolle = request.form.get('Rolle')
@@ -209,13 +241,13 @@ def anmeldenPT_post():
     return redirect(url_for('main.liste'))
 
 
-
-
-
 @main.route('/confirm')
 @main.route('/confirm/<ID>-<mbPT>')
 @login_required
 def confirm(ID, mbPT):
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     print(ID)
     print(mbPT)
     return render_template('confirmation.html', ID=ID, mbPT=mbPT)
@@ -224,6 +256,9 @@ def confirm(ID, mbPT):
 @main.route('/confirm/<ID>-<mbPT>', methods=["POST"])
 @login_required
 def confirm_post(ID, mbPT):
+    if current_user.Rolle != "Verwaltung":
+        abort(403)
+
     print(ID)
     print(mbPT)
     if mbPT == "Patienten":

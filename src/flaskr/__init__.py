@@ -43,6 +43,11 @@ def create_app(test_config=None):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    # blueprint for error parts of app
+    from .errors import not_found, forbidden
+    app.register_error_handler(404, not_found)
+    app.register_error_handler(403, forbidden)
+
 
     @login_manager.user_loader
     def load_user(user_id):
