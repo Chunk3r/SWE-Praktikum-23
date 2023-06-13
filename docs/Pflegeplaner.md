@@ -185,24 +185,81 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 ### Nachverfolgung der funktionalen Anforderungen
 
 1. Alle Betreuer müssen ihre Tagespläne einsehen können
+4. Kankenbesuche müssen während des Tages berücksichtigt werden
+6. Bei ambulanten Patienten muss die Reisezeit berücksichtigt werden
+10. Die Kunden sollen mehrmals am Tag besucht werden können
       
-      Wenn die Betreuer eine Verbindung zum VPN haben, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
+      Wenn die Betreuer eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
 
       ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
-      Abbildung Login
+      *Abbildung Login*
 
       Danach wird der Tagesplan angezeigt.
 
       ![Tagesplan](./Abbildungen_Implementierung/Abb_Tagesplan.png 'Tagesplan')
-      Abbildung Tagesplan
+      *Abbildung Tagesplan*
+
+      Über den Button "Dienstplan aktualisieren werden Änderungen berücksichtigt".
+      An den Uhrzeiten sieht man, dass die Reisezeit berücksichtigt wird.
+      Auf dem Tagesplan sieht man, dass Kunden auch mehrmals am Tag besucht werden.
 
 2. Die Tagespläne müssen automatisch erstellt werden
 
       Das Modul "dienstplan_generator" erstellt die Tagespläne unter Berücksichtigung der Arbeitszeit, Abmeldungen von Kunden und Pflegepersonal, Bedarf an Besuchen pro Tag.
 
 3. Es muss möglich sein, neue Kunden hinzuzufügen
+5. Es muss möglich sein, neue Mitarbeiter hinzuzufügen
 
       Wenn die Verwaltungsangestellten eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen
 
       ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
-      Abbildung Login
+      *Abbildung Login*
+
+      Über die Verwaltungsseite
+
+      ![Verwaltungsansicht](./Abbildungen_Implementierung/Abb_Verwaltung.png 'Verwaltungsansicht')
+      *Abbildung Verwaltung*
+
+      kommen die Verwaltungs angestellten zur Neuanmeldung von Patienten
+
+      ![Patienten_hinzufügen](./Abbildungen_Implementierung/Abb_PatHinzuf%C3%BCgen.png 'Patienten_hinzufügen')
+      *Abbildung Patienten hinzufügen*
+
+      und Mitarbeitern
+
+      ![Mitarbeiter_hinzufügen](./Abbildungen_Implementierung/Abb_MBHinzuf%C3%BCgen.png 'Mitarbeiter_hinzufügen')
+      *Abbildung Mitarbeiter hinzufügen*
+
+7. Für stationäre Klienten muss keine Reisezeit berücksichtigt werden
+
+      An den Uhrzeiten sieht man, dass bei stationären Patienten keine Reisezeit berücksichtigt wird.
+
+      ![Tagesplan_Stationär](./Abbildungen_Implementierung/Abb_TagesplanStation%C3%A4r.png 'Tagesplan_Stationär')
+      *Abbildung stationärer Tagesplan*
+
+### Nachverfolgung der nichtfunktionalen Anforderungen
+
+2. Das Programm sollte skalierbar sein, damit es im Laufe der Zeit mit einer wachsenden Zahl von Mitarbeitern und Kunden umgehen kann
+
+      Das Programm ist in der größe der Datenbank nur durch den Speicher des Servers limitiert und bei der Anzahl der Endgeräte die Anfragen an die Anwendung senden gibt es von der Sofware ebenfalls keine Limitierung.
+
+3. Das Programm sollte eine Reaktionszeit von 0.2 Sekunden oder weniger haben, wenn es eine Aktion ausführt
+
+      Die Webseite hat eine Antwortzeit von weniger als 0.2 Sekunden.
+
+      ![Responsetime](./Abbildungen_Implementierung/Abb_RespTime.png 'Responsetime')
+      *Abbildung Reaktionszeit*
+
+4. Die Benutzerschnittstelle sollte einfach zu bedienen sein
+
+      Wie in den Abbildungen oben zu sehen ist, sind die Oberflächen übersichtlich und alle Funktionen sind leicht zu finden.
+
+### Unterschiede zum Design
+
+Es gab Anpassungen der Oberflächen um die Übersichtlichkeit zu verbessern.
+
+Zum einen wurde das Suchfeld weggelassen.
+Zum anderen wurden die Spalten der Tabellen angepasst.
+"Krankmeldung" ist nicht mehr im Dropdownmenü "Edit", sondern in der Navbar.
+Der Login hat zusätzlich noch ein Feld für ein Passwort bekommen.
+Es gibt beim Tagesplan einen Button zum aktualisieren.

@@ -11,6 +11,7 @@ main = Blueprint('main', __name__)
 def dienstplan():
     db = get_db()
     date_str = request.args.get("date", type=str)
+    generate = request.args.get("generate", type=bool)
 
     # wenn kein datum angegeben wurde, heutiges datum verwenden
     if date_str == None:
@@ -18,7 +19,8 @@ def dienstplan():
     else:
         date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
 
-    dienstplan_generator.generate_dienstplaene()
+    if generate:
+        dienstplan_generator.generate_dienstplaene()
     
     # besuche aus datenbank laden
     appointments = db.execute("""SELECT *
