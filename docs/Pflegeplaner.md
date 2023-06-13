@@ -237,6 +237,13 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
       ![Tagesplan_Stationär](./Abbildungen_Implementierung/Abb_TagesplanStation%C3%A4r.png 'Tagesplan_Stationär')
       *Abbildung stationärer Tagesplan*
 
+### Offene funktionale Anforderungen
+
+8. Warnung, wenn es zu wenige Betreuer für alle Klienten gibt
+9. Es sollte eine Warnung ausgegeben werden, wenn es Betreuer ohne Klienten gibt
+
+      Beide Warnungnen sind nicht implementiert.
+
 ### Nachverfolgung der nichtfunktionalen Anforderungen
 
 2. Das Programm sollte skalierbar sein, damit es im Laufe der Zeit mit einer wachsenden Zahl von Mitarbeitern und Kunden umgehen kann
@@ -254,6 +261,12 @@ Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlic
 
       Wie in den Abbildungen oben zu sehen ist, sind die Oberflächen übersichtlich und alle Funktionen sind leicht zu finden.
 
+### Offene nichtfunktionale Anforderungen
+
+1. Das Programm sollte zuverlässig sein, damit es nicht abstürzt oder Daten verliert
+
+      Es gibt keine Backups oder Synchronisiation mit einer zweiten Instanz um den Server redundant zu betreiben.
+
 ### Unterschiede zum Design
 
 Es gab Anpassungen der Oberflächen um die Übersichtlichkeit zu verbessern.
@@ -263,3 +276,37 @@ Zum anderen wurden die Spalten der Tabellen angepasst.
 "Krankmeldung" ist nicht mehr im Dropdownmenü "Edit", sondern in der Navbar.
 Der Login hat zusätzlich noch ein Feld für ein Passwort bekommen.
 Es gibt beim Tagesplan einen Button zum aktualisieren.
+
+## 9. Test
+
+### Unittests
+
+      Die Unittests sind nicht lauffähig.
+
+### Manuelle Testfälle
+
+1. Login mit falschem Namen - muss felschlagen
+
+2. Login mit Verwaltungsmitarbeiter - muss funktionieren
+
+3. Login mit mobilem Pfleger - muss funktionieren
+
+4. Login mit stationärem Pfleger - muss funktionieren
+
+5. Zugriff auf Tagesplan mit Verwaltungsmitarbeiter - muss fehlschlagen
+
+6. Zugriff auf Tagesplan mit mobilem Pfleger - muss funktionieren
+
+7. Zugriff auf Tagesplan mit stationärem Pfleger - muss funktionieren
+
+8. Zugriff auf Personenverwaltung mit Verwaltungsmitarbeiter - muss funktionieren
+
+9. Zugriff auf Krankmeldungen mit Verwaltungsmitarbeiter - muss funktionieren
+
+10. Neue Kunden anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+11. Neue Mitarbeiter anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+12. Neue Kundenkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+13. Neue Mitarbeiterkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
