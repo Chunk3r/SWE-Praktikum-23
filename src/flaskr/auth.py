@@ -17,7 +17,7 @@ def login():
 def login_post():
     
     Nachname = request.form.get('Nachname')
-
+    Passwort = request.form.get('Passwort')
     cursor = db.get_db().cursor() 
     cursor.execute(f"Select MB_ID, Vorname, Nachname, Rolle  FROM Mitarbeiter WHERE Nachname='{Nachname}';")
     result = cursor.fetchone()
@@ -30,7 +30,8 @@ def login_post():
     user = Mitarbeiter(user_ID, user_Vorname, user_Nachname, user_Rolle)
     #db_user = load_user(user.Nachname) 
     
-    if user.Nachname != Nachname :
+    if user.Nachname != Nachname or Passwort != "12345":
+        flash("Falscher Name oder Passwort")
         return redirect(url_for('auth.login'))
     elif user.Rolle == "Verwaltung":
         login_user(user)
