@@ -56,12 +56,12 @@ def create_app(test_config=None):
         #conn = sqlite3.connect('../instance/flaskr.sqlite')
         conn = db.get_db()
         curs = conn.cursor()
-        curs.execute(f"SELECT MB_ID, Vorname, Nachname FROM Mitarbeiter WHERE MB_ID='{user_id}';")
+        curs.execute(f"SELECT MB_ID, Vorname, Nachname, Rolle FROM Mitarbeiter WHERE MB_ID='{user_id}';")
         result = curs.fetchone()
         if result is None:
             return None
         else:
-            return Mitarbeiter(int(result[0]), result[1], result[2])
+            return Mitarbeiter(int(result["MB_ID"]), result["Vorname"], result["Nachname"], result["Rolle"])
 
 
     return app
