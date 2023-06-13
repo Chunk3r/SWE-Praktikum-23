@@ -140,7 +140,7 @@ def krankPT_post():
     return redirect(url_for('main.verwaltung'))
 
 
-#Liste der Patienten - TODO Anzeigen der Adressen
+#Liste der Patienten
 @main.route('/patienten-liste')
 @login_required
 def patienten_liste():
@@ -150,7 +150,7 @@ def patienten_liste():
     result = list(get_db().execute("SELECT * FROM Kunde INNER JOIN Adresse ON Kunde.Adresse = Adresse.Adresse_ID").fetchall())
     return render_template('liste.html', Mitarbeiter=current_user, result=result, personen_type="Patienten")
 
-#Liste der Mitarbeiter - TODO Anzeigen der Adressen
+#Liste der Mitarbeiter
 @main.route('/mitarbeiter-liste')
 @login_required
 def mitarbeiter_liste():

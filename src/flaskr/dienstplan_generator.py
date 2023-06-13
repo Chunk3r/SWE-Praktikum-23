@@ -14,7 +14,7 @@ def generate_dienstplaene():
     today_str = getStringFromDate(today) # example: 2023-05-12
 
     #daten der mitarbeiter aus der db importieren
-    alle_mitarbeiter = db.cursor().execute("SELECT * FROM Mitarbeiter WHERE Rolle = 'Employee'").fetchall()
+    alle_mitarbeiter = db.cursor().execute("SELECT * FROM Mitarbeiter WHERE Rolle != 'Verwaltung'").fetchall()
 
     #daten der kunden aus der db importieren
     kunden = db.cursor().execute("SELECT * FROM Kunde").fetchall()

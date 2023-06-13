@@ -2,7 +2,7 @@ from flask_login import UserMixin, login_user
 import sqlite3
 from . import db#, login_manager
 class Mitarbeiter(UserMixin):
-    def __init__(self, ID, Vorname, Nachname, Rolle=None):
+    def __init__(self, ID, Vorname, Nachname, Rolle):
         self.ID = ID
         self.Vorname = Vorname
         self.Nachname = Nachname
