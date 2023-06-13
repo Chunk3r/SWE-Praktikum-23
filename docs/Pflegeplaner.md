@@ -180,3 +180,29 @@ Zuletzt haben wir die Seite "Verwaltungssicht", die nur für Verwaltungsangestel
 
 Diese Seite hat das gleiche Layout wie "Dienstplan", jedoch mit einem zusätzlichen Button in der Navigationsleiste namens "Verwaltung", der den Benutzer zur Seite "Verwaltungssicht" weiterleitet. Sie besteht aus einem minimalistischen Panel, das es dem Benutzer ermöglicht, den Tagesplan für Mitarbeiter und Patienten zu sehen, einen Mitarbeiter oder Patienten hinzuzufügen oder zu entfernen und die Krankmeldungen zu verwalten, die per Telefon an die Verwaltungsangestellten gesendet werden. Es sollte auch eine Suchleiste geben, die es dem Benutzer ermöglicht, nach einem bestimmten Mitarbeiter oder Patienten zu suchen und deren Informationen zu überprüfen.
 
+## 8. Implementierung
+
+### Nachverfolgung der funktionalen Anforderungen
+
+1. Alle Betreuer müssen ihre Tagespläne einsehen können
+      
+      Wenn die Betreuer eine Verbindung zum VPN haben, können sie die Webseite aufrufen und sich mit ihren Daten einloggen.
+
+      ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
+      Abbildung Login
+
+      Danach wird der Tagesplan angezeigt.
+
+      ![Tagesplan](./Abbildungen_Implementierung/Abb_Tagesplan.png 'Tagesplan')
+      Abbildung Tagesplan
+
+2. Die Tagespläne müssen automatisch erstellt werden
+
+      Das Modul "dienstplan_generator" erstellt die Tagespläne unter Berücksichtigung der Arbeitszeit, Abmeldungen von Kunden und Pflegepersonal, Bedarf an Besuchen pro Tag.
+
+3. Es muss möglich sein, neue Kunden hinzuzufügen
+
+      Wenn die Verwaltungsangestellten eine Verbindung zum VPN haben oder sich im LAN befinden, können sie die Webseite aufrufen und sich mit ihren Daten einloggen
+
+      ![Login](./Abbildungen_Implementierung/Abb_Login.png 'Login')
+      Abbildung Login

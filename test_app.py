@@ -1,5 +1,6 @@
 import pytest
 from flaskr.db import get_db
+#from flaskr.conftest import app, client
 
 
 def test_index(client, auth):
