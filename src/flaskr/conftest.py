@@ -26,7 +26,7 @@ def app():
     os.close(db_fd)
     os.close(db_path)
 
-@pytest.fixture(scope='session')
+@pytest.fixture
 def client(app):
     return app.test_client()
 
