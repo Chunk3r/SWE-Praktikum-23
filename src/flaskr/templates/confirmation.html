@@ -25,13 +25,17 @@
                                 {% endwith %}
         <div class="center">
             <h1>Zur Bestätigung bitte "ENTFERNEN" schreiben.</h1>
-	    <!--<form method="POST" action="/addPerson" onsubmit="return validateForm()">-->
-	    <form method="POST" action="/confirm/{{ID}}-{{mbPT}}" >
-              <div class="txt_field">
+            <!--<form method="POST" action="/addPerson" onsubmit="return validateForm()">-->
+            <form method="POST" action="/confirm/{{ID}}-{{mbPT}}" style="display: flex; flex-direction: column;">
+              <div class="txt_field" style="width: 100%;">
                 <input type="text" name="Valid" id="vorname" required>
                 <label>Bestätigungswort</label>
               </div>
-	      <a href="{{ url_for('main.liste', ID=ID, mbPT=mbPT)  }}">Zurück</a>
+              {% if mbPT == "Mitarbeiter" %} 
+              <a href="{{ url_for('main.mitarbeiter_liste') }}">Zurück</a>
+              {% else %}
+	            <a href="{{ url_for('main.patienten_liste') }}">Zurück</a>
+              {% endif %}
               <input type="submit" value="Bestätigen" id="submitBtn">
             </form>
           </div>

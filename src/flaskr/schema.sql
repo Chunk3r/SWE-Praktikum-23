@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Besuche;
 
 CREATE TABLE Adresse (
 	Adresse_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-	Straße TEXT ,
+	Strasse TEXT,
 	Hausnummer TEXT,
 	PLZ INTEGER,
 	Ort TEXT,
@@ -19,8 +19,8 @@ CREATE TABLE Adresse (
 
 CREATE TABLE Mitarbeiter (
   	MB_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  	VorName TEXT NOT NULL,
-  	NachName TEXT NOT NULL,
+  	Vorname TEXT NOT NULL,
+  	Nachname TEXT NOT NULL,
   	Adresse INTEGER,
   	Rolle TEXT NOT NULL,
   	FOREIGN KEY(Adresse) REFERENCES Adresse(Adresse_ID)
@@ -37,8 +37,8 @@ CREATE TABLE Dienstbefreiung_Mitarbeiter (
 
 CREATE TABLE Kunde (
         Kunden_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        VorName TEXT NOT NULL,
-        NachName TEXT NOT NULL,
+        Vorname TEXT NOT NULL,
+        Nachname TEXT NOT NULL,
         TelefonNummer TEXT NOT NULL,
         Adresse INTEGER,
         Rolle TEXT NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE Besuche (
 );
 
 -- Dummy data for Adresse table
-INSERT INTO Adresse (Straße, Hausnummer, PLZ, Ort, Wohnraum) VALUES
+INSERT INTO Adresse (Strasse, Hausnummer, PLZ, Ort, Wohnraum) VALUES
 ('Example Street', '123', 12345, 'Example City', 2),
 ('Test Road', '456', 54321, 'Testville', 1),
 ('Sample Avenue', '789', 98765, 'Sampletown', 3),
@@ -119,7 +119,7 @@ INSERT INTO Adresse (Straße, Hausnummer, PLZ, Ort, Wohnraum) VALUES
 ('Trial Boulevard', '654', 34567, 'Trial City', 1);
 
 -- Dummy data for Mitarbeiter table
-INSERT INTO Mitarbeiter (VorName, NachName, Adresse, Rolle) VALUES
+INSERT INTO Mitarbeiter (Vorname, Nachname, Adresse, Rolle) VALUES
 ('John', 'Doe', 1, 'Manager'),
 ('Jane', 'Smith', 2, 'Employee'),
 ('Michael', 'Johnson', 3, 'Employee'),
@@ -135,54 +135,54 @@ INSERT INTO Dienstbefreiung_Mitarbeiter (Mitarbeiter_ID, Start_Datum, ENDE_Datum
 (5, '2023-05-25', '2023-05-26');
 
 -- Dummy data for Kunde table
-INSERT INTO Kunde (VorName, NachName, TelefonNummer, Adresse, Rolle, Besuche_Pro_Tag) VALUES
+INSERT INTO Kunde (Vorname, Nachname, TelefonNummer, Adresse, Rolle, Besuche_Pro_Tag) VALUES
 ('Alice', 'Johnson', '555-1234', 1, 'Ambulant', 2),
-('Bob', 'Smith', '555-5678', 2, 'Stationär', 3),
+('Bob', 'Smith', '555-5678', 2, 'Stationaer', 3),
 ('Eve', 'Davis', '555-9012', 3, 'Ambulant', 1),
 ('Charlie', 'Brown', '555-3456', 4, 'Ambulant', 2),
 ('Olivia', 'Wilson', '555-7890', 5, 'Ambulant', 1),
 ('John', 'Doe', '555-1111', 6, 'Ambulant', 2),
-('Jane', 'Smith', '555-2222', 7, 'Stationär', 3),
+('Jane', 'Smith', '555-2222', 7, 'Stationaer', 3),
 ('Michael', 'Johnson', '555-3333', 8, 'Ambulant', 1),
 ('Emily', 'Davis', '555-4444', 9, 'Ambulant', 2),
 ('David', 'Wilson', '555-5555', 10, 'Ambulant', 1),
 ('Sarah', 'Brown', '555-6666', 11, 'Ambulant', 2),
-('Matthew', 'Lee', '555-7777', 12, 'Stationär', 3),
+('Matthew', 'Lee', '555-7777', 12, 'Stationaer', 3),
 ('Oliver', 'Anderson', '555-8888', 13, 'Ambulant', 1),
 ('Sophia', 'Taylor', '555-9999', 14, 'Ambulant', 2),
 ('James', 'Clark', '555-0000', 15, 'Ambulant', 1),
 ('Emma', 'Harris', '555-1234', 16, 'Ambulant', 2),
-('Noah', 'Jackson', '555-5678', 17, 'Stationär', 3),
+('Noah', 'Jackson', '555-5678', 17, 'Stationaer', 3),
 ('Isabella', 'White', '555-9012', 18, 'Ambulant', 1),
 ('William', 'Martin', '555-3456', 19, 'Ambulant', 2),
 ('Ava', 'Thompson', '555-7890', 20, 'Ambulant', 1),
 ('Sophia', 'Smith', '555-1111', 21, 'Ambulant', 2),
-('Jackson', 'Johnson', '555-2222', 22, 'Stationär', 3),
+('Jackson', 'Johnson', '555-2222', 22, 'Stationaer', 3),
 ('Oliver', 'Davis', '555-3333', 23, 'Ambulant', 1),
 ('Emma', 'Brown', '555-4444', 24, 'Ambulant', 2),
 ('Aiden', 'Wilson', '555-5555', 25, 'Ambulant', 1),
 ('Mia', 'Lee', '555-6666', 26, 'Ambulant', 2),
-('Liam', 'Anderson', '555-7777', 27, 'Stationär', 3),
+('Liam', 'Anderson', '555-7777', 27, 'Stationaer', 3),
 ('Charlotte', 'Taylor', '555-8888', 28, 'Ambulant', 1),
 ('Lucas', 'Clark', '555-9999', 29, 'Ambulant', 2),
 ('Harper', 'Harris', '555-0000', 30, 'Ambulant', 1),
 ('Mia', 'Jackson', '555-1234', 31, 'Ambulant', 2),
-('Liam', 'White', '555-5678', 32, 'Stationär', 3),
+('Liam', 'White', '555-5678', 32, 'Stationaer', 3),
 ('Amelia', 'Martin', '555-9012', 33, 'Ambulant', 1),
 ('Benjamin', 'Thompson', '555-3456', 34, 'Ambulant', 2),
 ('Ella', 'Smith', '555-7890', 35, 'Ambulant', 1),
 ('Elizabeth', 'Johnson', '555-1111', 36, 'Ambulant', 2),
-('Henry', 'Davis', '555-2222', 37, 'Stationär', 3),
+('Henry', 'Davis', '555-2222', 37, 'Stationaer', 3),
 ('Sebastian', 'Brown', '555-3333', 38, 'Ambulant', 1),
 ('Victoria', 'Wilson', '555-4444', 39, 'Ambulant', 2),
 ('Joseph', 'Lee', '555-5555', 40, 'Ambulant', 1),
 ('Scarlett', 'Anderson', '555-6666', 41, 'Ambulant', 2),
-('Christopher', 'Taylor', '555-7777', 42, 'Stationär', 3),
+('Christopher', 'Taylor', '555-7777', 42, 'Stationaer', 3),
 ('Evelyn', 'Clark', '555-8888', 43, 'Ambulant', 1),
 ('Samuel', 'Harris', '555-9999', 44, 'Ambulant', 2),
 ('Grace', 'Jackson', '555-0000', 45, 'Ambulant', 1),
 ('Zoe', 'White', '555-1234', 46, 'Ambulant', 2),
-('Andrew', 'Martin', '555-5678', 47, 'Stationär', 3),
+('Andrew', 'Martin', '555-5678', 47, 'Stationaer', 3),
 ('David', 'Thompson', '555-9012', 48, 'Ambulant', 1),
 ('Abigail', 'Smith', '555-3456', 49, 'Ambulant', 2),
 ('Daniel', 'Johnson', '555-7890', 50, 'Ambulant', 1);

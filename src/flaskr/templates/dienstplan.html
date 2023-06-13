@@ -21,10 +21,10 @@
         {% for item in appointments %}
             <tr>
                 <td>{{ item["Uhrzeit"] }}</td>
-                <td>{{ item["VorName"] }} {{ item["NachName"] }}</td>
+                <td>{{ item["Vorname"] }} {{ item["Nachname"] }}</td>
                 <td>{{ item["TelefonNummer"] }}</td>
                 <td>{{ item["Rolle"] }}</td>
-                <td>{{ item["Straße"] }} {{ item["Hausnummer"] }}, {{ item["PLZ"] }} {{ item["Ort"] }}</td>
+                <td>{{ item["Strasse"] }} {{ item["Hausnummer"] }}, {{ item["PLZ"] }} {{ item["Ort"] }}</td>
                 <td>{{ item["Wohnraum"] }}</td>
             </tr>
         {% endfor %}

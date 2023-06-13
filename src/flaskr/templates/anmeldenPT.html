@@ -18,11 +18,11 @@
                                     <h1>Neuen Patienten hinzufügen</h1>
                                     <form method="POST" action="/anmeldenPT">
                                       <div class="txt_field">
-                                        <input type="text" name="VorName" required>
+                                        <input type="text" name="Vorname" required>
                                         <label>Vorname</label>
                                       </div>
                                       <div class="txt_field">
-                                        <input type="text" name="NachName" required>
+                                        <input type="text" name="Nachname" required>
                                         <label>Nachname</label>
                                       </div>
 									  <div class="txt_field">
@@ -62,13 +62,13 @@
   					<label for="css">Mobil</label><br>
 				      </div>
 				      <div class="txt_field">
-  					<input type="radio"  name="Rolle" value="Stationär">
-  					<label for="javascript">Stationär</label>
+  					<input type="radio"  name="Rolle" value="Stationaer">
+  					<label for="javascript">Stationaer</label>
                       </div>
 
 
 				                    <div class="anmeldenMB-zuruck">
-                        				      <a href="{{ url_for('main.liste') }}">Zurück</a>
+                        				      <a href="{{ url_for('main.patienten_liste') }}">Zurück</a>
                                     </div>
                                       <input type="submit" value="Abschicken">
                                     </form>
