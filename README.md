@@ -14,7 +14,7 @@ Der Praktikumsbericht befindet sich [hier](./Pflegeplaner.md)
 
 ### Install required modules
 ```sh
-pip install flask flask_login
+pip install flask flask_login pytest coverage
 ```
 
 ### Datenbank initialisieren
@@ -32,6 +32,11 @@ python -m flask --app src/flaskr run
 
 # im vpn ereichbar
 python -m flask --app src/flaskr run --host=0.0.0.0
+```
+
+### Run tests
+```sh
+pytest
 ```
 
 ## Team
