@@ -17,7 +17,11 @@
         <nav>
             <img src="{{ url_for('static', filename='media/logo.svg') }}" class="logo1">
             <ul>
-		<li><span> Willkommen {{ Mitarbeiter.Nachname }} </span> </li>
+        {% if Mitarbeiter != undefinded %}
+		<li>
+            <span> Willkommen {{ Mitarbeiter.Nachname }} </span> 
+        </li>
+        {% endif %}
 
         <li><a href="{{ url_for('main.dienstplan') }}">DIENSTPLAN</a></li>
 		<li><a href="{{ url_for('main.mitarbeiter_liste') }}">PERSONEN VERWALTUNG</a></li>

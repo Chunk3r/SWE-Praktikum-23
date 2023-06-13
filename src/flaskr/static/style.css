@@ -769,6 +769,10 @@ input[type="submit"]:hover{
   flex-direction: column;
 }
 
+.error-box {
+  text-align: center;
+  padding: 2rem;
+}
 
 
 /*THIS IS TO FIX THE LOGIN PANEL - NO MORE SPLIT FORMULAR*/
