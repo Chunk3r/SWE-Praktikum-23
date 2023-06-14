@@ -20,7 +20,7 @@ body{
     min-height: 100vh;
 }
 
-/*For index.html*/
+/*Fuer index.html*/
 .mainBackground {
     width: 100%;
     height: 100%;
@@ -34,7 +34,7 @@ body{
     min-height: 100vh;
 }
 
-/*Navigation bar */
+/*NavBar bar */
 nav{
     width: 100%;
     height: 11em;
@@ -53,13 +53,13 @@ nav .logo1{
     width: 200px;
 
 }
-/*Navigation buttons */
+/*NavBar buttons */
 nav ul li{
     list-style: none;
     display: inline-block;
     margin-left: 40px;
 }
-/*Navigation buttons text */
+/*NavBar buttons text */
 nav ul li a,span{
     text-decoration: none;
     color: #fff;
@@ -69,17 +69,17 @@ nav ul li a,span{
     border-radius: 50px;
     transition: 0.5s;
 }
-/*Navigation buttons "on Hover" effect */
+/*NavBar "on Hover" effect */
 nav ul li a:hover{
     -webkit-text-stroke: 1px #5FB0FF;
 }
 
 
-/*Element: big text in the middle for index.html */
+/*Login-Panel in index.html */
 .content{
     text-align: center;
 }
-/*Its Text design */
+/*Text in .content */
 .content h1{
     margin: 102px;
     padding-bottom: 500px;
@@ -91,14 +91,14 @@ nav ul li a:hover{
 
 
 
-/*The background Video from index.html */
+/*Das Background Video */
 .back-video{
     position: absolute;
     right: 0;
     bottom: 0;
     z-index: -1;
 }
-/*Commands to keep the minimum aspect-ratio of the background video */
+/*Commands für minimum aspect-ratio vom background video */
 @media (min-aspect-ratio: 16/9){
     .back-video{
         width: 100%;
@@ -109,7 +109,7 @@ nav ul li a:hover{
 
 
 
-/*Commands to keep the maximum aspect-ratio of the background video */
+/*Commands für maximum aspect-ratio vom background video */
 @media (max-aspect-ratio: 16/9){
     .back-video{
         width: auto;
@@ -118,7 +118,7 @@ nav ul li a:hover{
 }
 /* */
 /* */
-/*!!!!IN CASE WE DECIDE FOR FOOTER LATER!!!!*/
+/*!!!!FALLS WIR SPÄTER  FOOTER HABEN WOLLEN!!!!*/
 
 footer {
     padding-top: 2rem;
@@ -551,7 +551,7 @@ input[type="submit"]:hover{
 }
 
 
-
+/*
 .search-box input[type="text"] {
   border-radius: 20px;
   border: none;
@@ -561,7 +561,7 @@ input[type="submit"]:hover{
 .search-box-text:focus{
   box-shadow: 0 0 10px 4px rgb(95, 176, 255);
 }
-
+*/
 .dropdown {
   position: relative;
   display: inline-block;
@@ -776,7 +776,7 @@ input[type="submit"]:hover{
 }
 
 
-/*THIS IS TO FIX THE LOGIN PANEL - NO MORE SPLIT FORMULAR*/
+/*Login-Panel korrigiert - keine geteilten Textfelder mehr.*/
 
 form .txt_fieldLOGIN{
   position: relative;
@@ -819,6 +819,7 @@ form .txt_fieldLOGIN{
   }
 
 
+  /*.center aber NUR für Login-Panel*/
   .centerLOGIN{
     margin-top: 50px;
       position: absolute;
