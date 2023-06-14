@@ -296,7 +296,8 @@ margin-top: 50px;
   z-index: 9999;
   opacity: 0;
   transform: translateX(10%);
-  transition: opacity 5s ease-in-out, transform 1s ease-in-out;
+  /*PopUp für 1 Stunde sichtbar */
+  transition: opacity 3600s;
 }
 
 .notif.show {
