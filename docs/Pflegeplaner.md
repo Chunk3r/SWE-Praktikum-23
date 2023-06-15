@@ -310,3 +310,17 @@ Es gibt beim Tagesplan einen Button zum aktualisieren.
 12. Neue Kundenkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
 
 13. Neue Mitarbeiterkrankmeldung anlegen mit Verwaltungsmitarbeiter - muss funktionieren
+
+
+____
+## Quellen
+
+Das Video, das beim Besuch der Website im Hintergrund abgespielt wird, enthält Clips, die von verschiedenen frei zugänglichen Plattformen bezogen wurden. Bei der Auswahl wurde darauf geachtet, dass alle Clips aus seriösen Quellen stammen, bei denen die Urheber der Inhalte ausdrücklich die Erlaubnis erteilt haben, ihre Arbeit frei zu verwenden, ohne dass eine Namensnennung oder irgendeine Form der Vergütung erforderlich ist. 
+Links zu den Quellen:
+
+
+- https://www.pexels.com/video/a-woman-instructing-the-elderly-man-to-the-medicine-7517699/
+- https://pixabay.com/videos/exercise-stretching-senior-elder-32937/
+- https://pixabay.com/videos/blood-pressure-doctor-health-49815/
+- https://www.pexels.com/de-de/video/frau-schreiben-arzt-gesundheit-4352136/
+- https://pixabay.com/videos/hospital-medical-clinic-health-142535/
