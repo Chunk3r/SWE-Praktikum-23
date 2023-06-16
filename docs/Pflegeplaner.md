@@ -281,7 +281,11 @@ Es gibt beim Tagesplan einen Button zum aktualisieren.
 
 ### Unittests
 
-      Die Unittests sind nicht lauffähig.
+      Es gibt zwei Unittests.
+      
+      Der erste Prüft ob die Startseite aufrufbar ist.
+      
+      Der zweite prüft ob bei Seiten für die eine Authentifizierung vorausgesetzt wird, diese auch tatsächlich verlangt wird.
 
 ### Manuelle Testfälle
 
