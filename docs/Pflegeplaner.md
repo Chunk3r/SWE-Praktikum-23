@@ -5,13 +5,23 @@
   <img src="logo.svg" alt="Logo" width="100%"/>
 </p>
 
-  ### 1. Einleitung und Rahmenbedingungen
+  ### 1.1 Einleitung
 
 Die Firma "Pflege für Alle", ein mobiler Pflegedienst, der hilfsbedürftigen Menschen Pflege und häusliche Unterstützung anbietet, hat uns gebeten, eine Software/App für sie zu entwickeln, um sie bei der Verwaltung zu unterstützen.
 
 Die Software sollte für das Personal (Verwaltung und Pflege) zugänglich sein und den Pflegern ermöglichen, den Dienstplan einzusehen (der den Namen und den Ort jedes Patienten sowie das Datum und die Uhrzeit enthält, zu der die Pfleger bei ihm sein müssen), während das Verwaltungspersonal Dinge wie die Verwaltung des Dienstplans, das Hinzufügen oder Entfernen eines Mitarbeiters oder Kunden und die Überprüfung seiner Verfügbarkeit erledigen kann.
 
 Die Gestaltung des Programms bleibt uns überlassen.
+
+  ### 1.2 Rahmenbedingungen
+
+- 8 Stunden Arbeitszeit
+
+- Ausfälle von Kunden am selben Tag
+
+- Skalierbarkeit, um mit dem Unternehmen zu wachsen
+
+- Standortunabhängige Verfügbarkeit
 
 ## 2. Anforderungen
 
