@@ -41,7 +41,7 @@ pytest
 
 ## Team
 
-- 
-- 
--
--
+- Sebastian Botezatu
+- Mentej-Mert Atalay
+- Patrick Pirig
+- Sinan Yildirim

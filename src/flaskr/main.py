@@ -261,9 +261,9 @@ def confirm_post(ID, mbPT):
     if current_user.Rolle != "Verwaltung":
         abort(403)
 
-    print(ID)
+    
     print(mbPT)
-    if mbPT == "Patienten":
+    if mbPT =="Patienten":
         Tabelle = "Kunde"
         T_ID = "Kunden_ID"
     else:
@@ -274,14 +274,19 @@ def confirm_post(ID, mbPT):
     if confirm != "ENTFERNEN":
         flash("Falsches PW!")
     else:
-        #sql_command = f"DELETE FROM {Tabelle} WHERE {T_ID}={ID};"
+        print(type(Tabelle))
+        print(type(T_ID))
+        print(type(ID))
         con = get_db()
         cursor = con.cursor()
-        cursor.execute("DELETE FROM ? WHERE ?=?;", [Tabelle, T_ID, ID])
+        #cursor.execute("DELETE FROM ? WHERE ?=?;", [Tabelle, T_ID, ID])
+        tempSQL = f"DELETE FROM {Tabelle} WHERE {T_ID} = {ID};"
+        print(tempSQL)
+        cursor.execute(tempSQL)
         con.commit()
 
 
-    return redirect(url_for('main.liste'))
+    return redirect(url_for('main.patienten_liste'))
 
 def existsUser(Vorname, Nachname, mbPT):
     con = get_db()
