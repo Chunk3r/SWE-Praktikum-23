@@ -297,6 +297,16 @@ Es gibt beim Tagesplan einen Button zum aktualisieren.
       
       Der zweite prüft ob bei Seiten für die eine Authentifizierung vorausgesetzt wird, diese auch tatsächlich verlangt wird.
 
+      ```
+      @pytest.mark.parametrize('path', (
+            '/verwaltung',
+            '/dienstplan',
+      ))
+      def test_login_required(client, path):
+            response = client.post(path)
+            assert response.headers["Location"] == "/login"
+      ```
+
 ### Manuelle Testfälle
 
 1. Login mit falschem Namen - muss felschlagen
