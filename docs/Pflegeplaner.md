@@ -291,21 +291,21 @@ Es gibt beim Tagesplan einen Button zum aktualisieren.
 
 ### Unittests
 
-      Es gibt zwei Unittests.
+Es gibt zwei Unittests.
       
-      Der erste Prüft ob die Startseite aufrufbar ist.
+Der erste Prüft ob die Startseite aufrufbar ist.
       
-      Der zweite prüft ob bei Seiten für die eine Authentifizierung vorausgesetzt wird, diese auch tatsächlich verlangt wird.
+Der zweite prüft ob bei Seiten für die eine Authentifizierung vorausgesetzt wird, diese auch tatsächlich verlangt wird.
 
-      ```
-      @pytest.mark.parametrize('path', (
-            '/verwaltung',
-            '/dienstplan',
-      ))
-      def test_login_required(client, path):
-            response = client.post(path)
-            assert response.headers["Location"] == "/login"
-      ```
+```
+@pytest.mark.parametrize('path', (
+      '/verwaltung',
+      '/dienstplan',
+))
+def test_login_required(client, path):
+      response = client.post(path)
+      assert response.headers["Location"] == "/login"
+```
 
 ### Manuelle Testfälle
 
